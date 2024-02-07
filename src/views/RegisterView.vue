@@ -1,10 +1,14 @@
 <script setup>
 import { ref } from "vue";
+import useTeacher from "@/composables/useTeacher";
+const { addTeacher } = useTeacher;
 
-const inputEmail = ref("");
-const inputPassword = ref("");
-const inputName = ref("");
-const inputDate = ref("");
+const teacher = ref({
+  email: null,
+  password: null,
+  name: null,
+  birthdate: null,
+});
 </script>
 
 <template>
@@ -59,7 +63,7 @@ const inputDate = ref("");
           </div>
 
           <div class="mt-8">
-            <form>
+            <form @submit.prevent="addTeacher(teacher)">
               <!-- INPUT EMAIL -->
               <div>
                 <label
@@ -74,7 +78,7 @@ const inputDate = ref("");
                   placeholder="ejemplo@correo.com"
                   maxlength="50"
                   required
-                  v-model="inputEmail"
+                  v-model="teacher.email"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
@@ -93,7 +97,7 @@ const inputDate = ref("");
                   placeholder="Tu nombre completo"
                   maxlength="100"
                   required
-                  v-model="inputName"
+                  v-model="teacher.name"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
@@ -110,7 +114,7 @@ const inputDate = ref("");
                   name="birthdate"
                   id="birthdate"
                   required
-                  v-model="inputDate"
+                  v-model="teacher.birthdate"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
@@ -132,7 +136,7 @@ const inputDate = ref("");
                   placeholder="Tu contraseña"
                   maxlength="100"
                   required
-                  v-model="inputPassword"
+                  v-model="teacher.password"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>

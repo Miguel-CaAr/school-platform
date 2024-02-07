@@ -1,7 +1,7 @@
 const getTeachers = () => {
   try {
     //Obtener el valor del localStorage
-    const teachersString = localStorage.getItem("teachers");
+    const teachersString = localStorage.getItem("teachers") ?? null;
     //Verificar si hay algo almacenado y parsearlo a un array
     const teachers = teachersString ? JSON.parse(teachersString) : [];
     //Retornar el array de teachers
@@ -26,7 +26,7 @@ const generateId = () => {
 
 const addTeacher = (newTeacher) => {
   try {
-    //Se obtienen los alumnos del localStorage
+    //Se obtienen los profesores del localStorage
     const teachers = getTeachers();
     //Asignar el nuevo ID al profesor
     newTeacher.id = generateId();
@@ -83,4 +83,11 @@ const updateTeacher = (updatedTeacher) => {
   } catch (error) {
     console.warn("Error al actualizar el profesor:", error);
   }
+};
+
+export default {
+  getTeachers,
+  addTeacher,
+  deleteTeacher,
+  updateTeacher,
 };
