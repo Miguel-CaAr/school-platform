@@ -13,10 +13,23 @@ const getTeachers = () => {
   }
 };
 
+const generateId = () => {
+  //Obtener todos los profes
+  const teachers = getTeachers();
+  if (teachers.length === 0) {
+    return 1; //No hay profesores, primer ID es 1
+  } else {
+    //Obtener el ultimo ID de los profes y sumarle 1
+    return teachers[teachers.length - 1].id + 1;
+  }
+};
+
 const addTeacher = (newTeacher) => {
   try {
     //Se obtienen los alumnos del localStorage
     const teachers = getTeachers();
+    //Asignar el nuevo ID al profesor
+    newTeacher.id = generateId();
     //Se agrega el nuevo profe
     teachers.push(newTeacher);
     //Se guarda el arreglo actualizado (con el nuevo profe) en el localStorage
@@ -32,7 +45,9 @@ const deleteTeacher = (teacherToDelete) => {
     //Obtener profes
     const teachers = getTeachers();
     //Encontrar el indice del profe
-    const index = teachers.indexOf(teacherToDelete);
+    const index = teachers.findIndex(
+      (teacher) => teacher.id === teacherToDelete.id
+    );
     //Verificar si el profe existe
     if (index !== -1) {
       //Eliminar el profe
@@ -54,11 +69,11 @@ const updateTeacher = (updatedTeacher) => {
     const teachers = getTeachers();
     //Encontrar indice de teacher
     const index = teachers.findIndex(
-      (teacher) => teacher.id === updateTeacher.id
+      (teacher) => teacher.id === updatedTeacher.id
     );
     //Verificar si existe el profe
     if (index != -1) {
-      teachers[index] = updateTeacher;
+      teachers[index] = updatedTeacher;
       //Actualizar teachers con el profe actualizado
       localStorage.setItem("teachers", JSON.stringify(teachers));
       console.log("Se actualizo el profesor con exito");
