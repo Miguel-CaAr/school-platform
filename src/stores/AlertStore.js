@@ -9,10 +9,10 @@ export const useAlertStore = defineStore("AlertStore", () => {
   const message = ref("message");
   //Metodos
   const showAlert = (
-    toggleShow,
-    isSuccess,
-    textTittle,
-    textMessage
+    toggleShow, // Boolean: Define si se muestra la alerta o no
+    isSuccess, // Boolean: Define si la alerta es de éxito o no ( o sea un error)
+    textTittle, // String: Título de la alerta
+    textMessage // String: Mensaje de la alerta
   ) => {
     show.value = toggleShow;
     success.value = isSuccess;
