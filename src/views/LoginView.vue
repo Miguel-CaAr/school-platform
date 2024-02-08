@@ -2,8 +2,10 @@
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
 
-const inputEmail = ref("");
-const inputPassword = ref("");
+const user = ref({
+  email: null,
+  password: null,
+});
 </script>
 
 <template>
@@ -70,7 +72,7 @@ const inputPassword = ref("");
                   placeholder="ejemplo@correo.com"
                   maxlength="50"
                   required
-                  v-model="inputEmail"
+                  v-model="user.email"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
@@ -94,7 +96,7 @@ const inputPassword = ref("");
                   placeholder="Tu contraseña"
                   maxlength="100"
                   required
-                  v-model="inputPassword"
+                  v-model="user.password"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
