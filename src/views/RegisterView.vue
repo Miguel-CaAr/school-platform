@@ -2,6 +2,13 @@
 import { ref } from "vue";
 import Alert from "@/components/Alert.vue";
 import useTeacher from "@/composables/useTeacher";
+import { useAlertStore } from "@/stores/AlertStore";
+const alertStore = useAlertStore();
+
+const onCloseModal = (show) => {
+  alertStore.show = show;
+};
+
 const { addTeacher } = useTeacher;
 
 const teacher = ref({
@@ -10,6 +17,16 @@ const teacher = ref({
   name: null,
   birthdate: null,
 });
+
+const submit = () => {
+  addTeacher(teacher.value);
+  teacher.value = {
+    email: null,
+    password: null,
+    name: null,
+    birthdate: null,
+  };
+};
 </script>
 
 <template>
@@ -62,7 +79,7 @@ const teacher = ref({
           </div>
 
           <div class="mt-8">
-            <form @submit.prevent="addTeacher(teacher)">
+            <form @submit.prevent="submit">
               <!-- INPUT EMAIL -->
               <div>
                 <label
@@ -160,5 +177,11 @@ const teacher = ref({
       </div>
     </div>
   </div>
-  <Alert />
+  <Alert
+    :show-modal="alertStore.show"
+    :sucess="alertStore.sucess"
+    :title="alertStore.title"
+    :message="alertStore.message"
+    @on-update-modal="onCloseModal"
+  />
 </template>
