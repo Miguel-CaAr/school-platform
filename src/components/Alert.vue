@@ -1,12 +1,36 @@
 <script setup>
-import { computed } from "vue";
-import { useAlertStore } from "@/stores/AlertStore";
-const alertStore = useAlertStore();
+import { toRefs } from "vue";
 
-const showModal = computed(() => alertStore.show);
-const sucess = computed(() => alertStore.success);
-const title = computed(() => alertStore.title);
-const message = computed(() => alertStore.message);
+const emit = defineEmits(["onUpdateModal"]);
+
+const closeModal = () => {
+  emit("onUpdateModal", false);
+};
+
+const props = defineProps({
+  showModal: {
+    type: Boolean,
+    require: true,
+    default: false,
+  },
+  sucess: {
+    type: Boolean,
+    require: true,
+    default: true,
+  },
+  title: {
+    type: String,
+    require: String,
+    default: "Registrado",
+  },
+  message: {
+    type: String,
+    require: String,
+    default: "Registrado",
+  },
+});
+
+const { showModal, sucess, title, message } = toRefs(props);
 </script>
 
 <template>
@@ -59,7 +83,7 @@ const message = computed(() => alertStore.message);
           Delete
         </button> -->
         <button
-          @click="alertStore.show = false"
+          @click="closeModal"
           type="button"
           class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
         >
