@@ -16,6 +16,7 @@ const teacher = ref({
   password: null,
   name: null,
   birthdate: null,
+  isAdmin: true,
 });
 
 const submit = () => {
@@ -25,6 +26,7 @@ const submit = () => {
     password: null,
     name: null,
     birthdate: null,
+    isAdmin: false,
   };
 };
 </script>

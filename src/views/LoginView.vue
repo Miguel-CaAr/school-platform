@@ -1,11 +1,17 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useAuthenticate } from "@/composables/useAuth";
 
 const user = ref({
   email: null,
   password: null,
 });
+
+const onSubmit = () => {
+  const userAuth = useAuthenticate(user.value);
+  console.log("userAuth", userAuth);
+};
 </script>
 
 <template>
@@ -56,9 +62,9 @@ const user = ref({
               Inicia sesión para acceder a tu cuenta
             </p>
           </div>
-
+          <!-- FORM -->
           <div class="mt-8">
-            <form>
+            <form @submit.prevent="onSubmit">
               <div>
                 <label
                   for="email"
