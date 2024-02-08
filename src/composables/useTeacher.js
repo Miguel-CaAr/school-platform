@@ -9,7 +9,13 @@ const getTeachers = () => {
     const teachers = teachersString ? JSON.parse(teachersString) : [];
     return teachers;
   } catch (error) {
-    console.warn("Error al obtener del localStorage: ", error);
+    //Alerta
+    alertStore.showAlert(
+      true,
+      false,
+      "Error al obtener datos!",
+      `Se produjo el siguiente error: ${error}`
+    );
     return [];
   }
 };
@@ -35,7 +41,7 @@ const addTeacher = (newTeacher) => {
     teachers.push(newTeacher);
     //Se guarda el arreglo actualizado (con el nuevo profe) en el localStorage
     localStorage.setItem("teachers", JSON.stringify(teachers));
-    console.log("Profesor agregado con exito");
+    //Alerta
     alertStore.showAlert(
       true,
       true,
@@ -43,7 +49,13 @@ const addTeacher = (newTeacher) => {
       `El profesor ${newTeacher.name} ha sido registrado con exito`
     );
   } catch (error) {
-    console.warn("Error al agregar el profesor: ", error);
+    //Alerta
+    alertStore.showAlert(
+      true,
+      false,
+      "Error al registrar!",
+      `El intentar agregar al profesor ${newTeacher.name} ha ocurrido al siguiente error: ${error}`
+    );
   }
 };
 
@@ -61,12 +73,30 @@ const deleteTeacher = (teacherToDelete) => {
       teachers.splice(index, 1);
       //Actualzar localStorage
       localStorage.setItem("teachers", JSON.stringify(teachers));
-      console.log("Profesor eliminado con exito");
+      //Alerta
+      alertStore.showAlert(
+        true,
+        true,
+        "Eliminado!",
+        `El profesor ${teacherToDelete.name} ha sido eliminado con exito`
+      );
     } else {
-      console.warn("El profesor a eliminar no existe");
+      //Alerta
+      alertStore.showAlert(
+        true,
+        false,
+        "No existe el profesor!",
+        `El profesor ${newTeacher.name} aun no ha sido registrado`
+      );
     }
   } catch (error) {
-    console.warn("Error al eliminar un profesor: ", error);
+    //Alerta
+    alertStore.showAlert(
+      true,
+      false,
+      "Error al eliminar profesor!",
+      `El error al eliminar a ${teacherToDelete.name} es el siguiente: ${error}`
+    );
   }
 };
 
@@ -83,12 +113,29 @@ const updateTeacher = (updatedTeacher) => {
       teachers[index] = updatedTeacher;
       //Actualizar teachers con el profe actualizado
       localStorage.setItem("teachers", JSON.stringify(teachers));
-      console.log("Se actualizo el profesor con exito");
+      //Alerta
+      alertStore.showAlert(
+        true,
+        true,
+        "Actualizado!",
+        `El profesor ${newTeacher.name} ha sido actualizado con exito`
+      );
     } else {
-      console.warn("El profesor no existe");
+      //Alerta
+      alertStore.showAlert(
+        true,
+        false,
+        "No existe el profesor!",
+        `El profesor ${newTeacher.name} aun no ha sido registrado`
+      );
     }
   } catch (error) {
-    console.warn("Error al actualizar el profesor:", error);
+    alertStore.showAlert(
+      true,
+      false,
+      "Error al actualizar!",
+      `Ha ocurrido un error al actualizar al profesor ${newTeacher.name} error: ${error}`
+    );
   }
 };
 
