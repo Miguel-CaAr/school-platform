@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Alert from "@/components/Alert.vue";
 import useTeacher from "@/composables/useTeacher";
 const { addTeacher } = useTeacher;
 
@@ -144,10 +145,20 @@ const teacher = ref({
                   Registrarse
                 </button>
               </div>
+
+              <p class="mt-8">
+                Tienes una cuenta?
+                <RouterLink to="/">
+                  <span class="cursor-pointer text-sm text-blue-600">
+                    Inicia sesión</span
+                  >
+                </RouterLink>
+              </p>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <Alert />
 </template>

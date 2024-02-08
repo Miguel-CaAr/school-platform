@@ -1,11 +1,12 @@
+import { useAlertStore } from "@/stores/AlertStore";
+const alertStore = useAlertStore();
+
 const getTeachers = () => {
   try {
     //Obtener el valor del localStorage
     const teachersString = localStorage.getItem("teachers") ?? null;
     //Verificar si hay algo almacenado y parsearlo a un array
     const teachers = teachersString ? JSON.parse(teachersString) : [];
-    //Retornar el array de teachers
-    console.log(teachers);
     return teachers;
   } catch (error) {
     console.warn("Error al obtener del localStorage: ", error);
@@ -35,6 +36,12 @@ const addTeacher = (newTeacher) => {
     //Se guarda el arreglo actualizado (con el nuevo profe) en el localStorage
     localStorage.setItem("teachers", JSON.stringify(teachers));
     console.log("Profesor agregado con exito");
+    alertStore.showAlert(
+      true,
+      true,
+      "Registrado!",
+      `El profesor ${newTeacher.name} ha sido registrado con exito`
+    );
   } catch (error) {
     console.warn("Error al agregar el profesor: ", error);
   }
