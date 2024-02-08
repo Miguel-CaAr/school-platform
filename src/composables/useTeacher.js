@@ -1,7 +1,5 @@
 import { useAlertStore } from "@/stores/AlertStore";
-import { useTeachersStore } from "@/stores/TeachersStore";
 const alertStore = useAlertStore();
-const useTeachers = useTeachersStore();
 
 const getTeachers = () => {
   try {
