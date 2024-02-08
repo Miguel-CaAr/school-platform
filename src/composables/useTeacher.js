@@ -12,12 +12,11 @@ const getTeachers = () => {
     return teachers;
   } catch (error) {
     //Alerta
-    alertStore.showAlert(
-      true,
-      false,
-      "Error al obtener datos!",
-      `Se produjo el siguiente error: ${error}`
-    );
+    alertStore.showAlert(true, {
+      isSuccess: true,
+      textTitle: "Error al obtener datos!",
+      textMessage: `Se produjo el siguiente error: ${error}`,
+    });
     return [];
   }
 };
@@ -46,20 +45,18 @@ const addTeacher = (newTeacher) => {
     //Guardar tambien en el store
     useTeachers.updateTeachersStore(teachers);
     //Alerta
-    alertStore.showAlert(
-      true,
-      true,
-      "Registrado!",
-      `El profesor ${newTeacher.name} ha sido registrado con exito`
-    );
+    alertStore.showAlert(true, {
+      isSuccess: true,
+      textTitle: "Registrado!",
+      textMessage: `El profesor ${newTeacher.name} ha sido registrado con exito`,
+    });
   } catch (error) {
     //Alerta
-    alertStore.showAlert(
-      true,
-      false,
-      "Error al registrar!",
-      `El intentar agregar al profesor ${newTeacher.name} ha ocurrido al siguiente error: ${error}`
-    );
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Error al registrar",
+      textMessage: `El intentar agregar al profesor ${newTeacher.name} ha ocurrido al siguiente error: ${error}`,
+    });
   }
 };
 
@@ -80,29 +77,26 @@ const deleteTeacher = (teacherToDelete) => {
       //Actualizar tambien en el store
       useTeachers.updateTeachersStore(teachers);
       //Alerta
-      alertStore.showAlert(
-        true,
-        true,
-        "Eliminado!",
-        `El profesor ${teacherToDelete.name} ha sido eliminado con exito`
-      );
+      alertStore.showAlert(true, {
+        isSuccess: true,
+        textTitle: "Eliminado!",
+        textMessage: `El profesor ${teacherToDelete.name} ha sido eliminado con exito`,
+      });
     } else {
       //Alerta
-      alertStore.showAlert(
-        true,
-        false,
-        "No existe el profesor!",
-        `El profesor ${newTeacher.name} aun no ha sido registrado`
-      );
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "No existe el profesor",
+        textMessage: `El profesor ${teacherToDelete.name} aun no ha sido registrado`,
+      });
     }
   } catch (error) {
     //Alerta
-    alertStore.showAlert(
-      true,
-      false,
-      "Error al eliminar profesor!",
-      `El error al eliminar a ${teacherToDelete.name} es el siguiente: ${error}`
-    );
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Error al eliminar el profesor!",
+      textMessage: `El error al eliminar a ${teacherToDelete.name} es el siguiente: ${error}`,
+    });
   }
 };
 
@@ -122,27 +116,36 @@ const updateTeacher = (updatedTeacher) => {
       //Actualizar tambien en el store
       useTeachers.updateTeachersStore(teachers);
       //Alerta
-      alertStore.showAlert(
-        true,
-        true,
-        "Actualizado!",
-        `El profesor ${newTeacher.name} ha sido actualizado con exito`
-      );
+      alertStore.showAlert(true, {
+        isSuccess: true,
+        textTitle: "Actualizado!",
+        textMessage: `El profesor ${updatedTeacher.name} ha sido actualizado con exito`,
+      });
     } else {
       //Alerta
       alertStore.showAlert(
         true,
-        false,
-        "No existe el profesor!",
-        `El profesor ${newTeacher.name} aun no ha sido registrado`
+        // false,
+        // "No existe el profesor!",
+        // `El profesor ${newTeacher.name} aun no ha sido registrado`
+        {
+          isSuccess: false,
+          textTitle: "No existe el profesor!",
+          textMessage: `El profesor ${updatedTeacher.name} aun no ha sido registrado`,
+        }
       );
     }
   } catch (error) {
     alertStore.showAlert(
       true,
-      false,
-      "Error al actualizar!",
-      `Ha ocurrido un error al actualizar al profesor ${newTeacher.name} error: ${error}`
+      // false,
+      // "Error al actualizar!",
+      // `Ha ocurrido un error al actualizar al profesor ${newTeacher.name} error: ${error}`
+      {
+        isSuccess: false,
+        textTitle: "Error al actualizar!",
+        textMessage: `Ha ocurrido un error al actualizar al profesor ${newTeacher.name} error: ${error}`,
+      }
     );
   }
 };
