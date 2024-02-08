@@ -13,7 +13,7 @@ const teacher = ref({
 
 <template>
   <!-- component -->
-  <div class="bg-white dark:bg-gray-900">
+  <div class="bg-white">
     <div class="flex justify-center h-screen">
       <div
         class="hidden bg-cover lg:block lg:w-2/3"
@@ -51,13 +51,11 @@ const teacher = ref({
       >
         <div class="flex-1">
           <div class="text-center">
-            <h2
-              class="text-4xl font-bold text-center text-gray-700 dark:text-white"
-            >
+            <h2 class="text-4xl font-bold text-center text-gray-700">
               Registro
             </h2>
 
-            <p class="mt-3 text-gray-500 dark:text-gray-300">
+            <p class="mt-3 text-gray-500">
               Registrate para iniciar sesion
             </p>
           </div>
@@ -68,7 +66,7 @@ const teacher = ref({
               <div>
                 <label
                   for="email"
-                  class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  class="block mb-2 text-sm text-gray-600"
                   >Correo electronico</label
                 >
                 <input
@@ -79,7 +77,7 @@ const teacher = ref({
                   maxlength="50"
                   required
                   v-model="teacher.email"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
@@ -87,7 +85,7 @@ const teacher = ref({
               <div class="mt-6">
                 <label
                   for="name"
-                  class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  class="block mb-2 text-sm text-gray-600"
                   >Nombre completo</label
                 >
                 <input
@@ -98,7 +96,7 @@ const teacher = ref({
                   maxlength="100"
                   required
                   v-model="teacher.name"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-m focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
@@ -106,7 +104,7 @@ const teacher = ref({
               <div class="mt-6">
                 <label
                   for="birthdate"
-                  class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  class="block mb-2 text-sm text-gray-600"
                   >Fecha de nacimiento</label
                 >
                 <input
@@ -115,16 +113,14 @@ const teacher = ref({
                   id="birthdate"
                   required
                   v-model="teacher.birthdate"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-m focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
               <!-- INPUT PASSWORD -->
               <div class="mt-6">
                 <div class="flex justify-between mb-2">
-                  <label
-                    for="password"
-                    class="text-sm text-gray-600 dark:text-gray-200"
+                  <label for="password" class="text-sm text-gray-600"
                     >Contraseña</label
                   >
                 </div>
@@ -137,7 +133,7 @@ const teacher = ref({
                   maxlength="100"
                   required
                   v-model="teacher.password"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md 0 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 

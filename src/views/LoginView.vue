@@ -8,7 +8,7 @@ const inputPassword = ref("");
 
 <template>
   <!-- component -->
-  <div class="bg-white dark:bg-gray-900">
+  <div class="bg-whit">
     <div class="flex justify-center h-screen">
       <div
         class="hidden bg-cover lg:block lg:w-2/3"
@@ -46,13 +46,11 @@ const inputPassword = ref("");
       >
         <div class="flex-1">
           <div class="text-center">
-            <h2
-              class="text-4xl font-bold text-center text-gray-700 dark:text-white"
-            >
+            <h2 class="text-4xl font-bold text-center text-gray-700">
               Inicio de sesion
             </h2>
 
-            <p class="mt-3 text-gray-500 dark:text-gray-300">
+            <p class="mt-3 text-gray-500">
               Inicia sesión para acceder a tu cuenta
             </p>
           </div>
@@ -62,7 +60,7 @@ const inputPassword = ref("");
               <div>
                 <label
                   for="email"
-                  class="block mb-2 text-sm text-gray-600 dark:text-gray-200"
+                  class="block mb-2 text-sm text-gray-600"
                   >Correo electronico</label
                 >
                 <input
@@ -73,15 +71,13 @@ const inputPassword = ref("");
                   maxlength="50"
                   required
                   v-model="inputEmail"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
               <div class="mt-6">
                 <div class="flex justify-between mb-2">
-                  <label
-                    for="password"
-                    class="text-sm text-gray-600 dark:text-gray-200"
+                  <label for="password" class="text-sm text-gray-600"
                     >Contraseña</label
                   >
                   <a
@@ -99,7 +95,7 @@ const inputPassword = ref("");
                   maxlength="100"
                   required
                   v-model="inputPassword"
-                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
