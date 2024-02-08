@@ -42,8 +42,6 @@ const addTeacher = (newTeacher) => {
     teachers.push(newTeacher);
     //Se guarda el arreglo actualizado (con el nuevo profe) en el localStorage
     localStorage.setItem("teachers", JSON.stringify(teachers));
-    //Guardar tambien en el store
-    useTeachers.updateTeachersStore(teachers);
     //Alerta
     alertStore.showAlert(true, {
       isSuccess: true,
@@ -74,8 +72,6 @@ const deleteTeacher = (teacherToDelete) => {
       teachers.splice(index, 1);
       //Actualzar localStorage
       localStorage.setItem("teachers", JSON.stringify(teachers));
-      //Actualizar tambien en el store
-      useTeachers.updateTeachersStore(teachers);
       //Alerta
       alertStore.showAlert(true, {
         isSuccess: true,
@@ -113,8 +109,6 @@ const updateTeacher = (updatedTeacher) => {
       teachers[index] = updatedTeacher;
       //Actualizar teachers con el profe actualizado
       localStorage.setItem("teachers", JSON.stringify(teachers));
-      //Actualizar tambien en el store
-      useTeachers.updateTeachersStore(teachers);
       //Alerta
       alertStore.showAlert(true, {
         isSuccess: true,
