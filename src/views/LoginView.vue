@@ -1,7 +1,15 @@
 <script setup>
 import { ref } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { useAuthenticate } from "@/composables/useAuth";
+import { useAlertStore } from "@/stores/AlertStore";
+import Alert from "@/components/Alert.vue";
+const alertStore = useAlertStore();
+const router = useRouter();
+
+const onCloseModal = (show) => {
+  alertStore.show = show;
+};
 
 const user = ref({
   email: null,
@@ -11,9 +19,13 @@ const user = ref({
 const onSubmit = () => {
   const userAuth = useAuthenticate(user.value);
   if (!userAuth) {
-    console.log("Contraseña o correo incorrecto");
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Correo o contraseña incorrecta!",
+      textMessage: `No ha sido posible iniciar sesion, verifica si la contraseña o el correo es correcto`,
+    });
   } else {
-    console.log("Sesion iniciada tio");
+    router.push("/Dashboard");
   }
 };
 </script>
@@ -117,8 +129,8 @@ const onSubmit = () => {
                 No tienes una cuenta?
                 <RouterLink to="register">
                   <span class="cursor-pointer text-sm text-blue-600">
-                    Registrate</span
-                  >
+                    Registrate
+                  </span>
                 </RouterLink>
               </p>
             </form>
@@ -127,4 +139,11 @@ const onSubmit = () => {
       </div>
     </div>
   </div>
+  <Alert
+    :show-modal="alertStore.show"
+    :success="alertStore.success"
+    :title="alertStore.title"
+    :message="alertStore.message"
+    @on-update-modal="onCloseModal"
+  />
 </template>
