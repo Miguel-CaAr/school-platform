@@ -10,7 +10,11 @@ const user = ref({
 
 const onSubmit = () => {
   const userAuth = useAuthenticate(user.value);
-  console.log("userAuth", userAuth);
+  if (!userAuth) {
+    console.log("Contraseña o correo incorrecto");
+  } else {
+    console.log("Sesion iniciada tio");
+  }
 };
 </script>
 
@@ -40,18 +44,15 @@ const onSubmit = () => {
             </h2>
 
             <p class="max-w-xl mt-3 text-gray-300">
-              Lorem ipsum dolor sit, amet consectetur adipisicing
-              elit. In autem ipsa, nulla laboriosam dolores,
-              repellendus perferendis libero suscipit nam temporibus
-              molestiae
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
+              autem ipsa, nulla laboriosam dolores, repellendus perferendis
+              libero suscipit nam temporibus molestiae
             </p>
           </div>
         </div>
       </div>
 
-      <div
-        class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6"
-      >
+      <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
         <div class="flex-1">
           <div class="text-center">
             <h2 class="text-4xl font-bold text-center text-gray-700">
@@ -66,9 +67,7 @@ const onSubmit = () => {
           <div class="mt-8">
             <form @submit.prevent="onSubmit">
               <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm text-gray-600"
+                <label for="email" class="block mb-2 text-sm text-gray-600"
                   >Correo electronico</label
                 >
                 <input
