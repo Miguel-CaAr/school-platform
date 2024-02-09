@@ -11,7 +11,7 @@ const getTeachers = () => {
   } catch (error) {
     //Alerta
     alertStore.showAlert(true, {
-      isSuccess: true,
+      isSuccess: false,
       textTitle: "Error al obtener datos!",
       textMessage: `Se produjo el siguiente error: ${error}`,
     });
