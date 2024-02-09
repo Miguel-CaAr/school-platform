@@ -44,8 +44,8 @@ const onSubmit = () => {
     //Si existe, checar si es teacher
     //y redireccionar al user correspondiente
     isAdmin(user.value.email)
-      ? router.push("/Dashboard-Admin")
-      : router.push("/Dashboard");
+      ? router.push("/dashboard")
+      : router.push("/home");
   }
 };
 </script>
