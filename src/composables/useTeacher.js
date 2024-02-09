@@ -30,10 +30,24 @@ const generateId = () => {
   }
 };
 
+const preventDuplicate = (newTeacher, allTeachers) => {
+  //Se evita que se agregue un email ya registrado
+  if (allTeachers.some((teacher) => teacher.email === newTeacher.email)) {
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Correo electronico registrado",
+      textMessage: `El profesor con el email ${newTeacher.email} ya se encuentra registrado`,
+    });
+    return true;
+  }
+};
+
 const addTeacher = (newTeacher) => {
   try {
     //Se obtienen los profesores del localStorage
     const teachers = getTeachers();
+    //Se evita que se agregue un email ya registrado
+    if (preventDuplicate(newTeacher, teachers)) return;
     //Asignar el nuevo ID al profesor
     newTeacher.id = generateId();
     //Se agrega el nuevo profe
