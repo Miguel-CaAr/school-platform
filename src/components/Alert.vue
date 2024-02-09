@@ -13,7 +13,7 @@ const props = defineProps({
     require: true,
     default: false,
   },
-  sucess: {
+  success: {
     type: Boolean,
     require: true,
     default: true,
@@ -30,7 +30,7 @@ const props = defineProps({
   },
 });
 
-const { showModal, sucess, title, message } = toRefs(props);
+const { showModal, success, title, message } = toRefs(props);
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const { showModal, sucess, title, message } = toRefs(props);
         <!-- Modal content -->
         <div class="sm:flex sm:items-start">
           <div
-            v-if="sucess"
+            v-if="success"
             class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10"
           >
             ✔️
