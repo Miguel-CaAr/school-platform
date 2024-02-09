@@ -47,7 +47,7 @@ const submit = () => {
     password: null,
     name: null,
     birthdate: null,
-    isAdmin: false,
+    isAdmin: true,
   };
 };
 </script>
@@ -59,13 +59,12 @@ const submit = () => {
       <div
         class="hidden bg-cover lg:block lg:w-2/3"
         style="
-          background-image: linear-gradient(
-            to right top,
-            #ffffff,
-            #b9b9b9,
-            #777777,
-            #3b3b3b,
-            #000000
+          background: rgb(0, 212, 255);
+          background: linear-gradient(
+            20deg,
+            rgba(0, 212, 255, 1) 0%,
+            rgba(9, 9, 121, 1) 84%,
+            rgba(0, 0, 0, 1) 100%
           );
         "
       >
@@ -189,7 +188,7 @@ const submit = () => {
 
               <div class="mt-6">
                 <button
-                  class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                  class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 >
                   Registrarse
                 </button>

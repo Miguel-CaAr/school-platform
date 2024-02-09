@@ -57,13 +57,12 @@ const onSubmit = () => {
       <div
         class="hidden bg-cover lg:block lg:w-2/3"
         style="
-          background-image: linear-gradient(
-            to right top,
-            #000000,
-            #3b3b3b,
-            #777777,
-            #b9b9b9,
-            #ffffff
+          background: rgb(2, 0, 36);
+          background: linear-gradient(
+            20deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(9, 9, 121, 1) 16%,
+            rgba(0, 212, 255, 1) 100%
           );
         "
       >
