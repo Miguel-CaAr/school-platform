@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Alert from "@/components/Alert.vue";
-import useTeacher from "@/composables/useTeacher";
+import useTeacher from "@/modules/teachers/composables/useTeacher";
 import { useAlertStore } from "@/stores/AlertStore";
 import { NInput } from "naive-ui";
 
@@ -29,8 +29,8 @@ const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const validarCorreo = (value) => !value || regexCorreo.test(value);
 
 const onUpdateValue = (value, opciones) => {
-  console.log("Valor", value);
-  console.log("Opciones", opciones);
+  // console.log("Valor", value);
+  // console.log("Opciones", opciones);
   const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!regexCorreo.test(value)) {
     _status.value = "error"; //Email invalido
