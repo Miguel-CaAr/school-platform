@@ -3,14 +3,15 @@ import { ref } from "vue";
 import Alert from "@/components/Alert.vue";
 import useTeacher from "@/composables/useTeacher";
 import { useAlertStore } from "@/stores/AlertStore";
+import { NInput } from "naive-ui";
+
+//Store
 const alertStore = useAlertStore();
-
-const onCloseModal = (show) => {
-  alertStore.show = show;
-};
-
 const { addTeacher } = useTeacher;
+//warning - success - error
+const _status = ref("");
 
+//Estados y variables
 const teacher = ref({
   email: null,
   password: null,
@@ -19,6 +20,26 @@ const teacher = ref({
   isAdmin: true,
 });
 
+//Funciones helpers
+const onCloseModal = (show) => {
+  alertStore.show = show;
+};
+
+const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const validarCorreo = (value) => !value || regexCorreo.test(value);
+
+const onUpdateValue = (value, opciones) => {
+  console.log("Valor", value);
+  console.log("Opciones", opciones);
+  const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!regexCorreo.test(value)) {
+    _status.value = "error"; //Email invalido
+  } else {
+    _status.value = "success"; //Email valido
+  }
+};
+
+//Funciones data Fetch
 const submit = () => {
   addTeacher(teacher.value);
   teacher.value = {
@@ -84,7 +105,7 @@ const submit = () => {
                 <label for="email" class="block mb-2 text-sm text-gray-600"
                   >Correo electronico</label
                 >
-                <input
+                <!-- <input
                   type="email"
                   name="email"
                   id="email"
@@ -93,6 +114,21 @@ const submit = () => {
                   required
                   v-model="teacher.email"
                   class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                /> -->
+                <NInput
+                  class=""
+                  size="large"
+                  placeholder="ejemplo@correo.com"
+                  type="text"
+                  id="email"
+                  :input-props="{
+                    name: 'email',
+                  }"
+                  :maxlength="50"
+                  :minlength="1"
+                  v-model:value="teacher.email"
+                  :status="_status"
+                  @update:value="onUpdateValue"
                 />
               </div>
 
