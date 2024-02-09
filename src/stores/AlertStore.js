@@ -21,17 +21,12 @@ export const useAlertStore = defineStore("AlertStore", () => {
    */
   const showAlert = (
     toggleShow,
-    { isSuccess, textTitle, textMessage } = {}
+    { isSuccess, textTitle, textMessage }
   ) => {
     show.value = toggleShow;
     success.value = isSuccess;
     title.value = textTitle;
     message.value = textMessage;
-    return {
-      isSuccess,
-      textTitle,
-      textMessage,
-    };
   };
   //Metodos computados
 
