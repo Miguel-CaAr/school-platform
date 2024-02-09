@@ -57,18 +57,15 @@ const submit = () => {
             </h2>
 
             <p class="max-w-xl mt-3 text-gray-300">
-              Lorem ipsum dolor sit, amet consectetur adipisicing
-              elit. In autem ipsa, nulla laboriosam dolores,
-              repellendus perferendis libero suscipit nam temporibus
-              molestiae
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
+              autem ipsa, nulla laboriosam dolores, repellendus perferendis
+              libero suscipit nam temporibus molestiae
             </p>
           </div>
         </div>
       </div>
 
-      <div
-        class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6"
-      >
+      <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
         <div class="flex-1">
           <div class="text-center">
             <h2 class="text-4xl font-bold text-center text-gray-700">
@@ -84,9 +81,7 @@ const submit = () => {
             <form @submit.prevent="submit">
               <!-- INPUT EMAIL -->
               <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm text-gray-600"
+                <label for="email" class="block mb-2 text-sm text-gray-600"
                   >Correo electronico</label
                 >
                 <input
@@ -103,9 +98,7 @@ const submit = () => {
 
               <!-- INPUT NAME -->
               <div class="mt-6">
-                <label
-                  for="name"
-                  class="block mb-2 text-sm text-gray-600"
+                <label for="name" class="block mb-2 text-sm text-gray-600"
                   >Nombre completo</label
                 >
                 <input
@@ -181,7 +174,7 @@ const submit = () => {
   </div>
   <Alert
     :show-modal="alertStore.show"
-    :sucess="alertStore.sucess"
+    :success="alertStore.success"
     :title="alertStore.title"
     :message="alertStore.message"
     @on-update-modal="onCloseModal"
