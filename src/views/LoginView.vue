@@ -4,6 +4,7 @@ import { RouterLink, useRouter } from "vue-router";
 import { useAuthenticate } from "@/composables/useAuth";
 import { useAlertStore } from "@/stores/AlertStore";
 import Alert from "@/components/Alert.vue";
+import { getAllUsers } from "@/composables/useAllUsers";
 const alertStore = useAlertStore();
 const router = useRouter();
 
@@ -16,16 +17,35 @@ const user = ref({
   password: null,
 });
 
+/**
+ * Determina si el usuario que corresponde al email del argumento entrante es admin
+ * @param {String} email
+ * @return {Boolean} Retorna si es admin o no
+ */
+const isAdmin = (email) => {
+  //Obtener todos los usuarios
+  const allUsers = getAllUsers();
+  //Buscar un usuario que corresponda al email
+  const user = allUsers.find((user) => user.email === email);
+  //Retornar el valor de isAdmin (true o false)
+  return user.isAdmin;
+};
+
 const onSubmit = () => {
   const userAuth = useAuthenticate(user.value);
   if (!userAuth) {
+    //Si no existe el usuario en la BD
     alertStore.showAlert(true, {
       isSuccess: false,
       textTitle: "Correo o contraseña incorrecta!",
       textMessage: `No ha sido posible iniciar sesion, verifica si la contraseña o el correo es correcto`,
     });
   } else {
-    router.push("/Dashboard");
+    //Si existe, checar si es teacher
+    //y redireccionar al user correspondiente
+    isAdmin(user.value.email)
+      ? router.push("/Dashboard-Admin")
+      : router.push("/Dashboard");
   }
 };
 </script>
