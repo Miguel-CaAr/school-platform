@@ -15,11 +15,9 @@ export const useAuthenticate = (_user, isTeacher = true) => {
   }
   users = JSON.parse(users);
   const user = users.filter(
-    (user) =>
-      user.email === _user.email && user.password == _user.password
+    (user) => user.email === _user.email && user.password == _user.password
   );
   if (user.length <= 0) {
-    alert("No existe");
     return false;
   }
 
