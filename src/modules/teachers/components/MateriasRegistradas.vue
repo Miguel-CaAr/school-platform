@@ -62,11 +62,6 @@ const abrirModal = (course, esVer) => {
               <th
                 class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                Cupo
-              </th>
-              <th
-                class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              >
                 Acciones
               </th>
             </tr>
@@ -82,23 +77,6 @@ const abrirModal = (course, esVer) => {
                 class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
               >
                 {{ course.students.length }}
-              </td>
-              <td
-                class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-              >
-                <div class="flex items-center">
-                  <span class="mr-2">0 de 0</span>
-                  <div class="relative w-full">
-                    <div
-                      class="overflow-hidden h-2 text-xs flex rounded bg-blue-200"
-                    >
-                      <div
-                        style="width: 0%"
-                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
               </td>
               <td
                 class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
