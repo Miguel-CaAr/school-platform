@@ -6,14 +6,14 @@ import { RouterLink } from "vue-router";
   <!-- component -->
   <div>
     <div
-      class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white"
+      class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white text-black"
     >
       <!-- Header -->
       <div
         class="fixed w-full flex items-center justify-between h-14 text-white z-10"
       >
         <div
-          class="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none"
+          class="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 border-none"
         >
           <img
             class="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden"
@@ -22,7 +22,7 @@ import { RouterLink } from "vue-router";
           <span class="hidden md:block">Student</span>
         </div>
         <div
-          class="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right"
+          class="flex justify-between items-center h-14 bg-blue-800 header-right"
         >
           <div
             class="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200"
@@ -52,9 +52,7 @@ import { RouterLink } from "vue-router";
           </div>
           <ul class="flex items-center">
             <li>
-              <div
-                class="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"
-              ></div>
+              <div class="block w-px h-6 mx-3 bg-gray-400"></div>
             </li>
             <li>
               <RouterLink to="/">
@@ -89,7 +87,7 @@ import { RouterLink } from "vue-router";
 
       <!-- Sidebar -->
       <div
-        class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar"
+        class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 h-full text-white transition-all duration-300 border-none z-10 sidebar"
       >
         <div
           class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow"
@@ -107,7 +105,7 @@ import { RouterLink } from "vue-router";
             <li>
               <a
                 href="#"
-                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg
@@ -133,7 +131,7 @@ import { RouterLink } from "vue-router";
             <li>
               <a
                 href="#"
-                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg
@@ -168,7 +166,7 @@ import { RouterLink } from "vue-router";
             <li>
               <a
                 href="#"
-                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span
                   class="w-5 h-5 inline-flex justify-center items-center ml-4"
@@ -177,7 +175,7 @@ import { RouterLink } from "vue-router";
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    class="stroke-current text-white dark:text-gray-800 transform transition-transform duration-500 ease-in-out"
+                    class="stroke-current text-white transform transition-transform duration-500 ease-in-out"
                   >
                     <path
                       stroke-linecap="round"
@@ -195,7 +193,7 @@ import { RouterLink } from "vue-router";
             <li>
               <a
                 href="#"
-                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg
@@ -234,7 +232,7 @@ import { RouterLink } from "vue-router";
             <li>
               <a
                 href="#"
-                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg
@@ -260,7 +258,7 @@ import { RouterLink } from "vue-router";
             <li>
               <a
                 href="#"
-                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg
@@ -303,7 +301,7 @@ import { RouterLink } from "vue-router";
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 p-4 gap-4"
         >
           <div
-            class="cursor-pointer bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group"
+            class="cursor-pointer bg-blue-500  shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 text-white font-medium group"
           >
             <div
               class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12"
@@ -338,7 +336,7 @@ import { RouterLink } from "vue-router";
             </div>
           </div>
           <div
-            class="cursor-pointer bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group"
+            class="cursor-pointer bg-blue-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600  text-white font-medium group"
           >
             <div
               class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12"
@@ -378,14 +376,12 @@ import { RouterLink } from "vue-router";
         <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
           <!-- Social Traffic -->
           <div
-            class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded"
+            class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 w-full shadow-lg rounded"
           >
             <div class="rounded-t mb-0 px-0 border-0">
               <div class="flex flex-wrap items-center px-4 py-2">
                 <div class="relative w-full max-w-full flex-grow flex-1">
-                  <h3
-                    class="font-semibold text-base text-gray-900 dark:text-gray-50"
-                  >
+                  <h3 class="font-semibold text-base text-gray-900">
                     Materias inscrito
                   </h3>
                 </div>
@@ -393,7 +389,7 @@ import { RouterLink } from "vue-router";
                   class="relative w-full max-w-full flex-grow flex-1 text-right"
                 >
                   <button
-                    class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    class="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                   >
                     Ver todo
@@ -407,24 +403,24 @@ import { RouterLink } from "vue-router";
                   <thead>
                     <tr>
                       <th
-                        class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        class="px-4 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                       >
                         Materia
                       </th>
                       <th
-                        class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        class="px-4 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                       >
                         Calificacion
                       </th>
                       <th
-                        class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        class="px-4 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                       >
                         Finalizacion
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="text-gray-700 dark:text-gray-100">
+                    <tr class="text-gray-700">
                       <th
                         class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"
                       >
@@ -452,14 +448,12 @@ import { RouterLink } from "vue-router";
 
           <!-- Recent Activities -->
           <div
-            class="relative flex flex-col min-w-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded"
+            class="relative flex flex-col min-w-0 break-words bg-gray-50 w-full shadow-lg rounded"
           >
             <div class="rounded-t mb-0 px-0 border-0">
               <div class="flex flex-wrap items-center px-4 py-2">
                 <div class="relative w-full max-w-full flex-grow flex-1">
-                  <h3
-                    class="font-semibold text-base text-gray-900 dark:text-gray-50"
-                  >
+                  <h3 class="font-semibold text-base text-gray-900">
                     Vacio
                   </h3>
                 </div>
@@ -467,7 +461,7 @@ import { RouterLink } from "vue-router";
                   class="relative w-full max-w-full flex-grow flex-1 text-right"
                 >
                   <button
-                    class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    class="bg-blue-500 text-white active:bg-blue-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                   >
                     Ver todo
@@ -476,7 +470,7 @@ import { RouterLink } from "vue-router";
               </div>
               <div class="block w-full">
                 <div
-                  class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                  class="px-4 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                 >
                   Vacio
                 </div>
@@ -490,113 +484,6 @@ import { RouterLink } from "vue-router";
 </template>
 
 <style scoped>
-/* Compiled dark classes from Tailwind */
-.dark .dark\:divide-gray-700 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgba(55, 65, 81);
-}
-.dark .dark\:bg-gray-50 {
-  background-color: rgba(249, 250, 251);
-}
-.dark .dark\:bg-gray-100 {
-  background-color: rgba(243, 244, 246);
-}
-.dark .dark\:bg-gray-600 {
-  background-color: rgba(75, 85, 99);
-}
-.dark .dark\:bg-gray-700 {
-  background-color: rgba(55, 65, 81);
-}
-.dark .dark\:bg-gray-800 {
-  background-color: rgba(31, 41, 55);
-}
-.dark .dark\:bg-gray-900 {
-  background-color: rgba(17, 24, 39);
-}
-.dark .dark\:bg-red-700 {
-  background-color: rgba(185, 28, 28);
-}
-.dark .dark\:bg-green-700 {
-  background-color: rgba(4, 120, 87);
-}
-.dark .dark\:hover\:bg-gray-200:hover {
-  background-color: rgba(229, 231, 235);
-}
-.dark .dark\:hover\:bg-gray-600:hover {
-  background-color: rgba(75, 85, 99);
-}
-.dark .dark\:hover\:bg-gray-700:hover {
-  background-color: rgba(55, 65, 81);
-}
-.dark .dark\:hover\:bg-gray-900:hover {
-  background-color: rgba(17, 24, 39);
-}
-.dark .dark\:border-gray-100 {
-  border-color: rgba(243, 244, 246);
-}
-.dark .dark\:border-gray-400 {
-  border-color: rgba(156, 163, 175);
-}
-.dark .dark\:border-gray-500 {
-  border-color: rgba(107, 114, 128);
-}
-.dark .dark\:border-gray-600 {
-  border-color: rgba(75, 85, 99);
-}
-.dark .dark\:border-gray-700 {
-  border-color: rgba(55, 65, 81);
-}
-.dark .dark\:border-gray-900 {
-  border-color: rgba(17, 24, 39);
-}
-.dark .dark\:hover\:border-gray-800:hover {
-  border-color: rgba(31, 41, 55);
-}
-.dark .dark\:text-white {
-  color: rgba(255, 255, 255);
-}
-.dark .dark\:text-gray-50 {
-  color: rgba(249, 250, 251);
-}
-.dark .dark\:text-gray-100 {
-  color: rgba(243, 244, 246);
-}
-.dark .dark\:text-gray-200 {
-  color: rgba(229, 231, 235);
-}
-.dark .dark\:text-gray-400 {
-  color: rgba(156, 163, 175);
-}
-.dark .dark\:text-gray-500 {
-  color: rgba(107, 114, 128);
-}
-.dark .dark\:text-gray-700 {
-  color: rgba(55, 65, 81);
-}
-.dark .dark\:text-gray-800 {
-  color: rgba(31, 41, 55);
-}
-.dark .dark\:text-red-100 {
-  color: rgba(254, 226, 226);
-}
-.dark .dark\:text-green-100 {
-  color: rgba(209, 250, 229);
-}
-.dark .dark\:text-blue-400 {
-  color: rgba(96, 165, 250);
-}
-.dark .group:hover .dark\:group-hover\:text-gray-500 {
-  color: rgba(107, 114, 128);
-}
-.dark .group:focus .dark\:group-focus\:text-gray-700 {
-  color: rgba(55, 65, 81);
-}
-.dark .dark\:hover\:text-gray-100:hover {
-  color: rgba(243, 244, 246);
-}
-.dark .dark\:hover\:text-blue-500:hover {
-  color: rgba(59, 130, 246);
-}
-
 /* Custom style */
 .header-right {
   width: calc(100% - 3.5rem);
