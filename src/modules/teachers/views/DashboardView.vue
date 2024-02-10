@@ -5,9 +5,8 @@ import { useCoursesStore } from "../../courses/store/CoursesStore";
 import MateriasRegistradas from "../../teachers/components/MateriasRegistradas.vue";
 const courseStore = useCoursesStore();
 
-const onCreateCourse = () => {
+const buttonCreateCourse = () => {
   courseStore.showModalCourses();
-  console.log("asd");
 };
 </script>
 
@@ -310,7 +309,7 @@ const onCreateCourse = () => {
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 p-4 gap-4"
         >
           <button
-            @click="onCreateCourse"
+            @click="buttonCreateCourse"
             class="cursor-pointer bg-blue-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 text-white font-medium group"
           >
             <div
