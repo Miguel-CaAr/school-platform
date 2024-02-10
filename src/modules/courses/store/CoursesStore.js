@@ -37,7 +37,6 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
   }
 
   function showModalCourses(show = true) {
-    console.log("Se activo la funcion");
     if (show !== Boolean(show)) {
       console.warn(
         `showModalCourse: No se ingreso un argumento valido, se recibio un ${typeof show}, con valor ${show}`
