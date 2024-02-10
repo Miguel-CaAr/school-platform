@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted } from "vue";
-import createCourse from "../../courses/composables/createCourse";
+import useCourse from "../../courses/composables/useCourse";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
 import { NButton } from "naive-ui";
 const courseStore = useCoursesStore();
 
-const { getCourses } = createCourse;
+const { getCourses } = useCourse;
 
 const allCourses = getCourses();
 

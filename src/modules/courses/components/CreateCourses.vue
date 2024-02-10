@@ -9,7 +9,7 @@ import {
   NDatePicker,
 } from "naive-ui";
 import { useCoursesStore } from "../store/CoursesStore";
-import createCourse from "../composables/createCourse";
+import useCourse from "../composables/useCourse";
 
 //Store
 const courseStore = useCoursesStore();
@@ -45,7 +45,7 @@ const courseStore = useCoursesStore();
             ></NDatePicker>
           </NFormItem>
           <n-button
-            @click="createCourse.addCourse(courseStore.course)"
+            @click="useCourse.addCourse(courseStore.course)"
             type="primary"
           >
             Crear

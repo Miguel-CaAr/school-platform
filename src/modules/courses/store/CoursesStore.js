@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import useCreateCourse from "../composables/createCourse.js";
 
 export const useCoursesStore = defineStore("CoursesStore", () => {
   //Estados
