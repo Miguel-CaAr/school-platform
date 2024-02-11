@@ -31,7 +31,7 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
       name: null,
       description: null,
       finished: null,
-      students: null,
+      students: [],
     };
   }
 
