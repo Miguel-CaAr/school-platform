@@ -31,12 +31,24 @@ const generateId = () => {
   }
 };
 
+const preventDuplicate = (newCourse, allCourses) => {
+  //Se evita que se agregue un curso ya registrado
+  if (allCourses.some((course) => course.name === newCourse.name)) {
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "El curso ya existe",
+      textMessage: `El curso con el name ${newCourse.name} ya se encuentra registrado`,
+    });
+    return true;
+  }
+};
+
 const addCourse = (newCourse) => {
   try {
     //Se obtienen los cursos del localStorage
     const courses = getCourses();
     //Se evita que se agregue un curso ya registrado
-    // if (preventDuplicate(newTeacher, teachers)) return;
+    if (preventDuplicate(newCourse, courses)) return;
     //Asignar el nuevo ID al profesor
     newCourse.id = generateId();
     //Se agrega el nuevo profe
@@ -62,4 +74,5 @@ const addCourse = (newCourse) => {
 export default {
   addCourse,
   getCourses,
+  preventDuplicate,
 };

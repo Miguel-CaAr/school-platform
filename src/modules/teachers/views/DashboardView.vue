@@ -3,7 +3,15 @@ import { RouterLink } from "vue-router";
 import CreateCourses from "../../courses/components/CreateCourses.modal.vue";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
 import MateriasRegistradas from "../../teachers/components/MateriasRegistradas.vue";
+import Alert from "@/components/Alert.vue";
+import { useAlertStore } from "@/stores/AlertStore";
 const courseStore = useCoursesStore();
+const alertStore = useAlertStore();
+
+//Functions helpers
+const onCloseModal = (show) => {
+  alertStore.show = show;
+};
 
 const buttonCreateCourse = () => {
   courseStore.showModalCourses();
@@ -476,6 +484,13 @@ const buttonCreateCourse = () => {
       </div>
     </div>
     <CreateCourses />
+    <Alert
+      :show-modal="alertStore.show"
+      :success="alertStore.success"
+      :title="alertStore.title"
+      :message="alertStore.message"
+      @on-update-modal="onCloseModal"
+    />
   </div>
 </template>
 
