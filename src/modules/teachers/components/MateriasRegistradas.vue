@@ -3,10 +3,9 @@ import { onMounted } from "vue";
 import useCourse from "../../courses/composables/useCourse";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
 import { NButton } from "naive-ui";
+
 const courseStore = useCoursesStore();
-
 const { getCourses } = useCourse;
-
 const allCourses = getCourses();
 
 onMounted(() => {
@@ -62,7 +61,10 @@ const abrirModal = (course, esVer) => {
               </th>
             </tr>
           </thead>
-          <tbody v-for="course in allCourses" :key="course.id">
+          <tbody
+            v-for="course in courseStore.listCourses"
+            :key="course.id"
+          >
             <tr class="text-gray-700">
               <th
                 class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"

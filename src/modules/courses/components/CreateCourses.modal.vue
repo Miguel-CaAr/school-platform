@@ -10,9 +10,13 @@ import {
 } from "naive-ui";
 import { useCoursesStore } from "../store/CoursesStore";
 import useCourse from "../composables/useCourse";
-
 //Store
 const courseStore = useCoursesStore();
+//Funciones
+const createCourseButton = () => {
+  useCourse.addCourse(courseStore.course);
+  courseStore.pushListcourses(courseStore.course); //Para pushear la lista de cursos el nuevo curso
+};
 </script>
 
 <template>
@@ -44,10 +48,7 @@ const courseStore = useCoursesStore();
               type="date"
             ></NDatePicker>
           </NFormItem>
-          <n-button
-            @click="useCourse.addCourse(courseStore.course)"
-            type="primary"
-          >
+          <n-button @click="createCourseButton" type="primary">
             Crear
           </n-button>
         </div>

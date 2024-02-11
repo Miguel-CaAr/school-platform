@@ -11,9 +11,9 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
     students: [],
   });
 
-  const listCourses = ref([]);
-
+  const listCourses = ref([]); //La lista de cursos que se renderizara con un for in en MateriasRegistradas.vue
   const modalCourse = ref(false);
+
   //Funciones
   function fillCoursesData(_course) {
     course.value = {
@@ -45,12 +45,25 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
     modalCourse.value = show;
   }
   /**
-   * Funcion para llenar el listado de materias
+   * Funcion para llenar el listado de materias que se renderizaran
    * @param {Array} _listado Listado de materias
    */
   function fillListCourses(_listado = []) {
     //todo: valdiar que sea un array, como la funcion de arriba
     listCourses.value = _listado;
+  }
+  /**
+   * Funcion para pushear la lista de cursos con el nuevo curso
+   * Es utilizada para evitar la llamada a la BD para añadir el ultimo curso agregado
+   * @param {object} _course Objeto del nuevo curso
+   */
+  function pushListcourses(_course = {}) {
+    if (_course !== Object(_course)) {
+      console.warn(
+        `pushListcourses: No se ingreso un argumento valido, se recibio un ${typeof _course}, con valor ${_course}`
+      );
+    }
+    listCourses.value.push(_course);
   }
 
   return {
@@ -63,5 +76,6 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
     cleanCoursesState,
     showModalCourses,
     fillListCourses,
+    pushListcourses,
   };
 });
