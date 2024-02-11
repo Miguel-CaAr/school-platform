@@ -32,7 +32,6 @@ const generateId = () => {
 };
 
 const addCourse = (newCourse) => {
-  console.log("addCourse", newCourse);
   try {
     //Se obtienen los cursos del localStorage
     const courses = getCourses();
