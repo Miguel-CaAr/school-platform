@@ -16,6 +16,7 @@ const courseStore = useCoursesStore();
 const createCourseButton = () => {
   useCourse.addCourse(courseStore.course);
   courseStore.pushListcourses(courseStore.course); //Para pushear la lista de cursos el nuevo curso
+  courseStore.showModalCourses(false);
 };
 </script>
 
