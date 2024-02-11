@@ -23,7 +23,7 @@ const createCourseButton = () => {
 <template>
   <NModal
     v-model:show="courseStore.modalCourse"
-    :title="'Crear curso'"
+    :title="'Curso'"
     :mask-closable="true"
     :preset="'card'"
     :style="{
