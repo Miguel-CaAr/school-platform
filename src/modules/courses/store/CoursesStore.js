@@ -13,6 +13,7 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
 
   const listCourses = ref([]); //La lista de cursos que se renderizara con un for in en MateriasRegistradas.vue
   const modalCourse = ref(false);
+  const disabledInputsModal = ref(false);
 
   //Funciones
   function fillCoursesData(_course) {
@@ -71,6 +72,7 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
     course,
     modalCourse,
     listCourses,
+    disabledInputsModal,
     //Funciones
     fillCoursesData,
     cleanCoursesState,

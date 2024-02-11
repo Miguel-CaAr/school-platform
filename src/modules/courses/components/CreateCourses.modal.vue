@@ -35,18 +35,23 @@ const createCourseButton = () => {
       <NForm>
         <div>
           <NFormItem label="Nombre del curso">
-            <NInput v-model:value="courseStore.course.name"></NInput>
+            <NInput
+              v-model:value="courseStore.course.name"
+              :disabled="courseStore.disabledInputsModal"
+            ></NInput>
           </NFormItem>
           <NFormItem label="Descripcion del curso">
             <NInput
               v-model:value="courseStore.course.description"
               type="textarea"
+              :disabled="courseStore.disabledInputsModal"
             ></NInput>
           </NFormItem>
           <NFormItem label="Fecha de finalizacion del curso">
             <NDatePicker
               v-model:value="courseStore.course.finished"
               type="date"
+              :disabled="courseStore.disabledInputsModal"
             ></NDatePicker>
           </NFormItem>
           <n-button @click="createCourseButton" type="primary">
