@@ -1,6 +1,8 @@
 import {} from "vue";
 import { useAlertStore } from "../../../stores/AlertStore";
+import { useCoursesStore } from "../store/CoursesStore.js";
 const alertStore = useAlertStore();
+const courseStore = useCoursesStore();
 
 const getCourses = () => {
   try {
@@ -53,6 +55,8 @@ const addCourse = (newCourse) => {
     newCourse.id = generateId();
     //Se agrega el nuevo profe
     courses.push(newCourse);
+    //Para pushear la lista de cursos el nuevo curso
+    courseStore.pushListcourses(courseStore.course);
     //Se guarda el arreglo actualizado (con el nuevo profe) en el localStorage
     localStorage.setItem("courses", JSON.stringify(courses));
     //Alerta
