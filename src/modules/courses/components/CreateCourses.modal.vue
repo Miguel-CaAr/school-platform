@@ -34,16 +34,16 @@ const createCourseButton = () => {
     <NCard>
       <NForm>
         <div>
-          <NFormItem label="name">
+          <NFormItem label="Nombre del curso">
             <NInput v-model:value="courseStore.course.name"></NInput>
           </NFormItem>
-          <NFormItem label="description">
+          <NFormItem label="Descripcion del curso">
             <NInput
               v-model:value="courseStore.course.description"
               type="textarea"
             ></NInput>
           </NFormItem>
-          <NFormItem label="finished">
+          <NFormItem label="Fecha de finalizacion del curso">
             <NDatePicker
               v-model:value="courseStore.course.finished"
               type="date"
