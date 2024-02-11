@@ -79,11 +79,21 @@ const abrirModal = (course, esVer) => {
                 {{ course.students.length }}
               </td>
               <td
-                class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+                class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-1"
               >
-                <NButton @click="abrirModal(course, true)" type="success"
+                <NButton
+                  @click="abrirModal(course, true)"
+                  strong
+                  secondary
+                  type="success"
                   >Ver</NButton
                 >
+                <NButton @click="" strong secondary type="info"
+                  >Editar</NButton
+                >
+                <NButton @click="" strong secondary type="error"
+                  >Eliminar
+                </NButton>
               </td>
             </tr>
           </tbody>
