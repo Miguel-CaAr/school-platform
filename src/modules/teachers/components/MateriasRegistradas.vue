@@ -16,6 +16,7 @@ const abrirModal = (course, esVer) => {
   if (esVer) {
     courseStore.fillCoursesData(course);
     courseStore.disabledInputsModal = true;
+    courseStore.buttonCreate = false;
     courseStore.showModalCourses(true);
   }
 };

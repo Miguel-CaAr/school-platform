@@ -54,7 +54,11 @@ const createCourseButton = () => {
               :disabled="courseStore.disabledInputsModal"
             ></NDatePicker>
           </NFormItem>
-          <n-button @click="createCourseButton" type="primary">
+          <n-button
+            v-if="courseStore.buttonCreate"
+            @click="createCourseButton"
+            type="primary"
+          >
             Crear
           </n-button>
         </div>

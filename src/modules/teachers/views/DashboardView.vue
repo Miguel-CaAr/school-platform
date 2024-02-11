@@ -8,6 +8,7 @@ const courseStore = useCoursesStore();
 const buttonCreateCourse = () => {
   courseStore.showModalCourses();
   courseStore.disabledInputsModal = false;
+  courseStore.buttonCreate = true;
 };
 </script>
 
