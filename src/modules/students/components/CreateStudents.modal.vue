@@ -37,7 +37,16 @@ const createStudentButton = () => {
 };
 
 const editStudentButton = () => {
-  useStudent.updateStudent(studentsStore.student);
+  if (_status.value === "success") {
+    useStudent.updateStudent(studentsStore.student);
+  } else {
+    notification.create({
+      title: "Correo invalido",
+      content: "Ingrese un correo valido",
+      type: "warning",
+      duration: 5000,
+    });
+  }
 };
 
 const onlyAllowEmail = (value) => {
