@@ -7,6 +7,7 @@ import {
   NFormItem,
   NButton,
   NDatePicker,
+  NTable,
 } from "naive-ui";
 import { useCoursesStore } from "../store/CoursesStore";
 import useCourse from "../composables/useCourse";
@@ -74,6 +75,26 @@ const editCourseButton = () => {
           </n-button>
         </div>
       </NForm>
+      <NTable
+        v-if="!courseStore.buttonCreate && !courseStore.buttonEdit"
+        :bordered="false"
+        :single-line="false"
+      >
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Calificacion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+          </tr>
+        </tbody>
+      </NTable>
     </NCard>
   </NModal>
 </template>
