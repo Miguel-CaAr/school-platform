@@ -115,9 +115,50 @@ const deleteStudent = (studentToDelete) => {
   }
 };
 
+const updateStudent = (updatedStudent) => {
+  try {
+    // Obtener alumnos
+    const students = getStudents();
+    // Encontrar el indice del alumno
+    const index = students.findIndex(
+      (student) => student.id === updatedStudent.id
+    );
+    // Verificar si el alumno existe
+    if (index !== -1) {
+      // Actualizar el alumno en el arreglo de alumnos
+      students[index] = updatedStudent;
+      // Actualizar la lista de alumnos en studentsStore
+      studentsStore.listStudents = students;
+      // Actualizar el localStorage
+      localStorage.setItem("students", JSON.stringify(students));
+      // Alerta
+      alertStore.showAlert(true, {
+        isSuccess: true,
+        textTitle: "Alumno editado!",
+        textMessage: `El alumno ${updatedStudent.name} ha sido editado con éxito`,
+      });
+    } else {
+      // Alerta
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "No existe el alumno",
+        textMessage: `El alumno ${updatedStudent.name} no ha sido encontrado`,
+      });
+    }
+  } catch (error) {
+    // Alerta
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Error al editar el alumno!",
+      textMessage: `Se produjo un error al intentar editar el alumno ${updatedStudent.name}: ${error}`,
+    });
+  }
+};
+
 export default {
   addStudent,
   getStudents,
   preventDuplicate,
   deleteStudent,
+  updateStudent,
 };

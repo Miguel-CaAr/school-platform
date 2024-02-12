@@ -16,6 +16,11 @@ const createStudentButton = () => {
   useStudent.addStudent(studentsStore.student);
   studentsStore.showModalStudents(false);
 };
+
+const editStudentButton = () => {
+  useStudent.updateStudent(studentsStore.student);
+  studentsStore.showModalStudents(false);
+};
 </script>
 
 <template>
@@ -58,7 +63,11 @@ const createStudentButton = () => {
           >
             Crear
           </n-button>
-          <n-button v-if="studentsStore.buttonEdit" @click="" type="Info">
+          <n-button
+            v-if="studentsStore.buttonEdit"
+            @click="editStudentButton"
+            type="Info"
+          >
             Crear
           </n-button>
         </div>
