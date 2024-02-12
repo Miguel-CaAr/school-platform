@@ -37,17 +37,18 @@ const studentsSelect = Object.keys(allStudents).map((key) => ({
     <NCard>
       <NForm>
         <div>
-          <n-space vertical>
-            <n-select v-model:value="course" :options="coursesSelect" />
-            <n-select
+          <NSpace vertical>
+            <NSelect v-model:value="course" :options="coursesSelect" />
+            <NSelect
               v-model:value="student"
               :disabled="course === null"
               :options="studentsSelect"
+              :multiple="true"
             />
-          </n-space>
-          <n-button class="mt-4" type="success"
+          </NSpace>
+          <NButton class="mt-4" type="success"
             >Realizar inscripcion
-          </n-button>
+          </NButton>
         </div>
       </NForm>
     </NCard>
