@@ -51,7 +51,11 @@ const createStudentButton = () => {
               :disabled="studentsStore.disabledInputsModal"
             ></NInput>
           </NFormItem>
-          <n-button @click="createStudentButton" type="primary">
+          <n-button
+            v-if="studentsStore.buttonCreate"
+            @click="createStudentButton"
+            type="primary"
+          >
             Crear
           </n-button>
         </div>

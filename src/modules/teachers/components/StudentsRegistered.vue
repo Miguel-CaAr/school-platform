@@ -13,12 +13,12 @@ onMounted(() => {
 });
 
 const openModal = (students, isSee) => {
-  // if (isSee) {
-  //   studentStore.fillStudentsData(students);
-  //   studentStore.disabledInputsModal = true;
-  //   studentStore.buttonCreate = false;
-  //   studentStore.showModalStudents(true);
-  // }
+  if (isSee) {
+    studentStore.fillStudentsData(students);
+    studentStore.disabledInputsModal = true;
+    studentStore.buttonCreate = false;
+    studentStore.showModalStudents(true);
+  }
 };
 </script>
 
@@ -83,7 +83,7 @@ const openModal = (students, isSee) => {
                 class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-1"
               >
                 <NButton
-                  @click="openModal()"
+                  @click="openModal(student, true)"
                   strong
                   secondary
                   type="success"
