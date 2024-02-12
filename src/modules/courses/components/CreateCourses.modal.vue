@@ -102,6 +102,11 @@ const editCourseButton = () => {
             <td>Options</td>
           </tr>
         </tbody>
+        <tbody v-if="courseStore.course.students.length < 1">
+          <tr class="text-center">
+            <td colspan="3">No hay alumnos inscritos</td>
+          </tr>
+        </tbody>
       </NTable>
     </NCard>
   </NModal>
