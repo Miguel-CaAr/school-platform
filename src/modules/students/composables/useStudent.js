@@ -1,8 +1,16 @@
 import {} from "vue";
 import { useAlertStore } from "../../../stores/AlertStore";
 import { useStudentsStore } from "../store/StudentsStore.js";
+import { CrearObjError } from "../../global/utils/errorHandler";
+import { validarCamposRequeridos } from "../../global/utils/utils";
+import { createDiscreteApi } from "naive-ui";
+//Store
 const alertStore = useAlertStore();
 const studentsStore = useStudentsStore();
+//Global configs
+const { notification } = createDiscreteApi(["notification"], {
+  notificationProviderProps: { max: 10, keepAliveOnHover: true },
+});
 
 const getStudents = () => {
   try {
@@ -47,6 +55,7 @@ const preventDuplicate = (newStudent, allStudents) => {
 
 const addStudent = (newStudent) => {
   try {
+    validarEstudiante(newStudent);
     //Se obtienen los alumnos del localStorage
     const students = getStudents();
     //Se evita que se agregue un alumnos ya registrado
@@ -65,13 +74,24 @@ const addStudent = (newStudent) => {
       textTitle: "Registrado!",
       textMessage: `El alumno ${newStudent.name} ha sido registrado con exito`,
     });
+    studentsStore.showModalStudents(false);
   } catch (error) {
-    //Alerta
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "Error al registrar",
-      textMessage: `El intentar agregar al alumno ${newStudent.name} ha ocurrido al siguiente error: ${error}`,
-    });
+    if (error.type) {
+      notification.create({
+        title: error.name,
+        content: error.message,
+        description: error.naiveDesc,
+        type: error.type,
+        duration: error.naiveDuration,
+      });
+    } else {
+      //Alerta hecha por mi, de mi, pa mi
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "Error al registrar",
+        textMessage: `El intentar agregar al alumno ${newStudent.name} ha ocurrido al siguiente error: ${error}`,
+      });
+    }
   }
 };
 
@@ -151,6 +171,30 @@ const updateStudent = (updatedStudent) => {
       isSuccess: false,
       textTitle: "Error al editar el alumno!",
       textMessage: `Se produjo un error al intentar editar el alumno ${updatedStudent.name}: ${error}`,
+    });
+  }
+};
+
+const validarEstudiante = (newStudent) => {
+  const camposRequeridos = ["name", "email", "password"];
+  const objCampos = {
+    name: newStudent.name,
+    email: newStudent.email,
+    password: newStudent.password,
+  };
+  const faltantes = validarCamposRequeridos(objCampos, camposRequeridos);
+  const listFormat = new Intl.ListFormat("es", {
+    style: "long",
+    type: "conjunction",
+  }).format(faltantes);
+
+  if (faltantes.length > 0) {
+    throw CrearObjError({
+      mensaje: `${listFormat} son requeridos!`,
+      type: "warning",
+      nombreError: "Campos requeridos",
+      naiveDesc: "Favor de llenar los campos requeridos",
+      naiveDuration: 5000,
     });
   }
 };
