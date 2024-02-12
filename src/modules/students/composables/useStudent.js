@@ -137,6 +137,7 @@ const deleteStudent = (studentToDelete) => {
 
 const updateStudent = (updatedStudent) => {
   try {
+    validarEstudiante(updatedStudent);
     // Obtener alumnos
     const students = getStudents();
     // Encontrar el indice del alumno
@@ -165,13 +166,24 @@ const updateStudent = (updatedStudent) => {
         textMessage: `El alumno ${updatedStudent.name} no ha sido encontrado`,
       });
     }
+    studentsStore.showModalStudents(false);
   } catch (error) {
-    // Alerta
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "Error al editar el alumno!",
-      textMessage: `Se produjo un error al intentar editar el alumno ${updatedStudent.name}: ${error}`,
-    });
+    if (error.type) {
+      notification.create({
+        title: error.name,
+        content: error.message,
+        description: error.naiveDesc,
+        type: error.type,
+        duration: error.naiveDuration,
+      });
+    } else {
+      // Alerta
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "Error al editar el alumno!",
+        textMessage: `Se produjo un error al intentar editar el alumno ${updatedStudent.name}: ${error}`,
+      });
+    }
   }
 };
 

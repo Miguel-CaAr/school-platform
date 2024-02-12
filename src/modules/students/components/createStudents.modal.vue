@@ -18,7 +18,6 @@ const createStudentButton = () => {
 
 const editStudentButton = () => {
   useStudent.updateStudent(studentsStore.student);
-  studentsStore.showModalStudents(false);
 };
 </script>
 
