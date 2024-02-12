@@ -2,14 +2,17 @@
 import { RouterLink } from "vue-router";
 import CreateCourses from "../../courses/components/CreateCourses.modal.vue";
 import CreateStudents from "../../students/components/createStudents.modal.vue";
+import Enroll from "../../courses/components/Enroll.modal.vue";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
 import { useStudentsStore } from "../../students/store/StudentsStore";
+import { useEnrollementsStore } from "../../courses/store/EnrollementsStore";
 import MateriasRegistradas from "../../teachers/components/MateriasRegistradas.vue";
 import StudentsRegistered from "../../teachers/components/StudentsRegistered.vue";
 import Alert from "@/components/Alert.vue";
 import { useAlertStore } from "@/stores/AlertStore";
 const courseStore = useCoursesStore();
 const studentsStore = useStudentsStore();
+const enrollementsStore = useEnrollementsStore();
 const alertStore = useAlertStore();
 
 //Functions helpers
@@ -29,6 +32,10 @@ const buttonCreateStudent = () => {
   studentsStore.disabledInputsModal = false;
   studentsStore.buttonCreate = true;
   studentsStore.buttonEdit = false;
+};
+
+const openEnrollModal = () => {
+  enrollementsStore.showModalEnroll(true);
 };
 </script>
 
@@ -160,6 +167,7 @@ const buttonCreateStudent = () => {
             </li> -->
             <li>
               <a
+                @click="openEnrollModal"
                 href="#"
                 class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
@@ -430,6 +438,7 @@ const buttonCreateStudent = () => {
     </div>
     <CreateCourses />
     <CreateStudents />
+    <Enroll />
     <Alert
       :show-modal="alertStore.show"
       :success="alertStore.success"
