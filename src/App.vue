@@ -1,9 +1,12 @@
 <script setup>
 import { RouterView } from "vue-router";
+import { NNotificationProvider } from "naive-ui";
 </script>
 
 <template>
-  <RouterView />
+  <NNotificationProvider>
+    <RouterView />
+  </NNotificationProvider>
 </template>
 
 <style scoped></style>
