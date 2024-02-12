@@ -25,6 +25,7 @@ const user = ref({
 const isAdmin = (email) => {
   //Obtener todos los usuarios
   const allUsers = getAllUsers();
+  console.log("allusers", allUsers);
   //Buscar un usuario que corresponda al email
   const user = allUsers.find((user) => user.email === email);
   //Retornar el valor de isAdmin (true o false)
