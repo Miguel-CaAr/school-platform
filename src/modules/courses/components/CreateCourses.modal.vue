@@ -41,6 +41,7 @@ const editCourseButton = () => {
             <NInput
               v-model:value="courseStore.course.name"
               :disabled="courseStore.disabledInputsModal"
+              placeholder="Nombre"
             ></NInput>
           </NFormItem>
           <NFormItem label="Descripcion del curso">
@@ -48,6 +49,7 @@ const editCourseButton = () => {
               v-model:value="courseStore.course.description"
               type="textarea"
               :disabled="courseStore.disabledInputsModal"
+              placeholder="Descripcion"
             ></NInput>
           </NFormItem>
           <NFormItem label="Fecha de finalizacion del curso">
@@ -55,6 +57,7 @@ const editCourseButton = () => {
               v-model:value="courseStore.course.finished"
               type="date"
               :disabled="courseStore.disabledInputsModal"
+              placeholder="AAAA/MM/DD"
             ></NDatePicker>
           </NFormItem>
           <n-button

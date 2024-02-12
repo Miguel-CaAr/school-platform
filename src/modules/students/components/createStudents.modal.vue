@@ -39,6 +39,7 @@ const editStudentButton = () => {
             <NInput
               v-model:value="studentsStore.student.name"
               :disabled="studentsStore.disabledInputsModal"
+              placeholder="Nombre"
             ></NInput>
           </NFormItem>
           <NFormItem label="Correo del alumno">
@@ -46,12 +47,14 @@ const editStudentButton = () => {
               v-model:value="studentsStore.student.email"
               type="email"
               :disabled="studentsStore.disabledInputsModal"
+              placeholder="ejemplo@dominio.com"
             ></NInput>
           </NFormItem>
           <NFormItem label="Contraseña del alumno">
             <NInput
               v-model:value="studentsStore.student.password"
               :disabled="studentsStore.disabledInputsModal"
+              placeholder="Contraseña"
             ></NInput>
           </NFormItem>
           <n-button

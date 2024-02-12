@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import CreateCourses from "../../courses/components/CreateCourses.modal.vue";
-import CreateStudents from "../../students/components/createStudents.modal.vue";
+import CreateStudents from "../../students/components/CreateStudents.modal.vue";
 import Enroll from "../../courses/components/Enroll.modal.vue";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
 import { useStudentsStore } from "../../students/store/StudentsStore";
