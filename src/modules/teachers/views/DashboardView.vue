@@ -132,7 +132,7 @@ const buttonCreateStudent = () => {
                 </div>
               </div>
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="#"
                 class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
@@ -157,7 +157,7 @@ const buttonCreateStudent = () => {
                   >Panel principal</span
                 >
               </a>
-            </li>
+            </li> -->
             <li>
               <a
                 href="#"
@@ -166,10 +166,12 @@ const buttonCreateStudent = () => {
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg
                     class="w-5 h-5"
-                    height="64px"
-                    viewBox="0 0 24 24"
-                    fill="none"
+                    viewBox="0 0 512 512"
+                    version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    fill="#ffffff"
+                    stroke="#ffffff"
                   >
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g
@@ -178,22 +180,34 @@ const buttonCreateStudent = () => {
                       stroke-linejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21"
-                        stroke="#ffffff"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
+                      <title>add-document-note</title>
+                      <g
+                        id="Page-1"
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <g
+                          id="icon"
+                          fill="#ffffff"
+                          transform="translate(85.333333, 42.666667)"
+                        >
+                          <path
+                            d="M341.333333,277.333333 L341.332667,341.332333 L405.333333,341.333333 L405.333333,384 L341.332667,383.999333 L341.333333,448 L298.666667,448 L298.666667,383.999333 L234.666667,384 L234.666667,341.333333 L298.666667,341.332333 L298.666667,277.333333 L341.333333,277.333333 Z M234.666667,3.55271368e-14 L341.333333,106.666667 L341.333,256 L298.666,256 L298.666667,124.339779 L216.993555,42.6666667 L42.6666667,42.6666667 L42.6666667,384 L213.333,383.999 L213.333333,405.333333 L277.333333,405.333333 L277.333,426.666 L1.42108547e-14,426.666667 L1.42108547e-14,3.55271368e-14 L234.666667,3.55271368e-14 Z M213.333333,298.666667 L213.333333,341.333333 L64,341.333333 L64,298.666667 L213.333333,298.666667 Z M196,85.3333333 L256,145.333333 L124,277.333333 L64,277.333333 L64,217.333333 L196,85.3333333 Z M157.304,169.265333 L96,230.570667 L96,245.333333 L110.72,245.333333 L172.046,184.007333 L157.304,169.265333 Z M195.989333,130.581333 L179.932,146.637333 L194.674,161.379333 L210.730667,145.322667 L195.989333,130.581333 Z"
+                            id="Combined-Shape"
+                          ></path>
+                        </g>
+                      </g>
                     </g>
                   </svg>
                 </span>
                 <span class="ml-2 text-sm tracking-wide truncate"
-                  >Materias</span
+                  >Inscribir en curso</span
                 >
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="#"
                 class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
@@ -219,8 +233,8 @@ const buttonCreateStudent = () => {
                   >Alumnos</span
                 >
               </a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <a
                 href="#"
                 class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6"
@@ -249,7 +263,7 @@ const buttonCreateStudent = () => {
                   >1.2k</span
                 >
               </a>
-            </li>
+            </li> -->
             <li class="px-5 hidden md:block">
               <div class="flex flex-row items-center mt-5 h-8">
                 <div
