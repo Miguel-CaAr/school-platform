@@ -115,9 +115,50 @@ const deleteCourse = (courseToDelete) => {
   }
 };
 
+const updateCourse = (updatedCourse) => {
+  try {
+    //Obtener cursos
+    const courses = getCourses();
+    //Encontrar el índice del curso
+    const index = courses.findIndex(
+      (course) => course.id === updatedCourse.id
+    );
+    //Verificar si el curso existe
+    if (index !== -1) {
+      //Actualizar el curso en el arreglo de cursos
+      courses[index] = updatedCourse;
+      // Actualizar la lista de cursos en courseStore
+      courseStore.listCourses = courses;
+      //Actualizar el localStorage
+      localStorage.setItem("courses", JSON.stringify(courses));
+      //Alerta
+      alertStore.showAlert(true, {
+        isSuccess: true,
+        textTitle: "Curso editado!",
+        textMessage: `El curso ${updatedCourse.name} ha sido editado con éxito`,
+      });
+    } else {
+      //Alerta
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "No existe el curso",
+        textMessage: `El curso ${updatedCourse.name} no ha sido encontrado`,
+      });
+    }
+  } catch (error) {
+    //Alerta
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Error al editar el curso!",
+      textMessage: `Se produjo un error al intentar editar el curso ${updatedCourse.name}: ${error}`,
+    });
+  }
+};
+
 export default {
   addCourse,
   getCourses,
   preventDuplicate,
   deleteCourse,
+  updateCourse,
 };

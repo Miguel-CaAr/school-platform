@@ -17,6 +17,11 @@ const createCourseButton = () => {
   useCourse.addCourse(courseStore.course);
   courseStore.showModalCourses(false);
 };
+
+const editCourseButton = () => {
+  useCourse.updateCourse(courseStore.course);
+  courseStore.showModalCourses(false);
+};
 </script>
 
 <template>
@@ -60,7 +65,11 @@ const createCourseButton = () => {
           >
             Crear
           </n-button>
-          <n-button v-if="courseStore.buttonEdit" @click="" type="info">
+          <n-button
+            v-if="courseStore.buttonEdit"
+            @click="editCourseButton"
+            type="info"
+          >
             Realizar edicion
           </n-button>
         </div>
