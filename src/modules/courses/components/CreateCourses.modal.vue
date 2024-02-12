@@ -20,7 +20,6 @@ const createCourseButton = () => {
 
 const editCourseButton = () => {
   useCourse.updateCourse(courseStore.course);
-  courseStore.showModalCourses(false);
 };
 </script>
 

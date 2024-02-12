@@ -137,6 +137,7 @@ const deleteCourse = (courseToDelete) => {
 
 const updateCourse = (updatedCourse) => {
   try {
+    validateCourseFields(updatedCourse);
     //Obtener cursos
     const courses = getCourses();
     //Encontrar el índice del curso
@@ -165,13 +166,24 @@ const updateCourse = (updatedCourse) => {
         textMessage: `El curso ${updatedCourse.name} no ha sido encontrado`,
       });
     }
+    courseStore.showModalCourses(false);
   } catch (error) {
-    //Alerta
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "Error al editar el curso!",
-      textMessage: `Se produjo un error al intentar editar el curso ${updatedCourse.name}: ${error}`,
-    });
+    if (error.type) {
+      notification.create({
+        title: error.name,
+        content: error.message,
+        description: error.naiveDesc,
+        type: error.type,
+        duration: error.naiveDuration,
+      });
+    } else {
+      //Alerta
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "Error al editar el curso!",
+        textMessage: `Se produjo un error al intentar editar el curso ${updatedCourse.name}: ${error}`,
+      });
+    }
   }
 };
 
