@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import {
   NInput,
   NModal,
@@ -11,13 +12,33 @@ import { useStudentsStore } from "../store/StudentsStore";
 import useStudent from "../composables/useStudent";
 //Store
 const studentsStore = useStudentsStore();
+//Estados
+const _status = ref("");
+//Validaciones regex
+const onlyAllowLetters = (value) => /^[a-zA-Z\s]*$/.test(value);
+const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 //Funciones
 const createStudentButton = () => {
-  useStudent.addStudent(studentsStore.student);
+  if (_status.value === "success") {
+    useStudent.addStudent(studentsStore.student);
+  } else {
+    console.log(
+      _status.value,
+      "Se ingreso un correo invalido, implementar alerta con naive-ui"
+    );
+  }
 };
 
 const editStudentButton = () => {
   useStudent.updateStudent(studentsStore.student);
+};
+
+const onlyAllowEmail = (value) => {
+  if (!regexEmail.test(value)) {
+    _status.value = "error"; //Email invalido
+  } else {
+    _status.value = "success"; //Email valido
+  }
 };
 </script>
 
@@ -40,6 +61,7 @@ const editStudentButton = () => {
               v-model:value="studentsStore.student.name"
               :disabled="studentsStore.disabledInputsModal"
               placeholder="Nombre"
+              :allow-input="onlyAllowLetters"
             ></NInput>
           </NFormItem>
           <NFormItem label="Correo del alumno">
@@ -48,6 +70,8 @@ const editStudentButton = () => {
               type="email"
               :disabled="studentsStore.disabledInputsModal"
               placeholder="ejemplo@dominio.com"
+              :status="_status"
+              @update:value="onlyAllowEmail"
             ></NInput>
           </NFormItem>
           <NFormItem label="Contraseña del alumno">

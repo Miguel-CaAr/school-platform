@@ -21,6 +21,9 @@ const createCourseButton = () => {
 const editCourseButton = () => {
   useCourse.updateCourse(courseStore.course);
 };
+
+//Validaciones regex
+const onlyAllowLetters = (value) => /^[a-zA-Z\s]*$/.test(value);
 </script>
 
 <template>
@@ -42,6 +45,7 @@ const editCourseButton = () => {
               v-model:value="courseStore.course.name"
               :disabled="courseStore.disabledInputsModal"
               placeholder="Nombre"
+              :allow-input="onlyAllowLetters"
             ></NInput>
           </NFormItem>
           <NFormItem label="Descripcion del curso">
