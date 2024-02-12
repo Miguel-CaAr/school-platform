@@ -3,7 +3,7 @@
  * @param {String} email Email del usuario de tipo cadena
  * @param {Boolean} type Determina si el usuario es de tipo profesor
  */
-export const useAuthenticate = (_user, isTeacher = true) => {
+export const useAuthenticate = (_user, isTeacher) => {
   let users = [];
 
   if (isTeacher) {

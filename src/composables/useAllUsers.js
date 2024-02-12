@@ -4,8 +4,8 @@
  */
 export const getAllUsers = () => {
   //Obtener el valor del localStorage
-  const teachersString = localStorage.getItem("teachers") ?? "";
-  const studentsString = localStorage.getItem("students") ?? "";
+  const teachersString = localStorage.getItem("teachers") ?? null;
+  const studentsString = localStorage.getItem("students") ?? null;
   // Parsear
   const teachers = teachersString ? JSON.parse(teachersString) : [];
   const students = studentsString ? JSON.parse(studentsString) : [];
