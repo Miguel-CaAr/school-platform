@@ -16,7 +16,6 @@ const courseStore = useCoursesStore();
 //Funciones
 const createCourseButton = () => {
   useCourse.addCourse(courseStore.course);
-  courseStore.showModalCourses(false);
 };
 
 const editCourseButton = () => {

@@ -1,9 +1,17 @@
 import {} from "vue";
 import { useAlertStore } from "../../../stores/AlertStore";
 import { useCoursesStore } from "../store/CoursesStore.js";
+import { CrearObjError } from "../../global/utils/errorHandler";
+import { validarCamposRequeridos } from "../../global/utils/utils";
+import { createDiscreteApi } from "naive-ui";
+//Store
 const alertStore = useAlertStore();
 const courseStore = useCoursesStore();
-
+//Global configs
+const { notification } = createDiscreteApi(["notification"], {
+  notificationProviderProps: { max: 10, keepAliveOnHover: true },
+});
+//Funciones
 const getCourses = () => {
   try {
     //Obtener el valor del localStorage
@@ -47,6 +55,7 @@ const preventDuplicate = (newCourse, allCourses) => {
 
 const addCourse = (newCourse) => {
   try {
+    validateCourseFields(newCourse);
     //Se obtienen los cursos del localStorage
     const courses = getCourses();
     //Se evita que se agregue un curso ya registrado
@@ -65,13 +74,24 @@ const addCourse = (newCourse) => {
       textTitle: "Registrado!",
       textMessage: `El curso ${newCourse.name} ha sido registrado con exito`,
     });
+    courseStore.showModalCourses(false);
   } catch (error) {
-    //Alerta
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "Error al registrar",
-      textMessage: `El intentar agregar al curso ${newCourse.name} ha ocurrido al siguiente error: ${error}`,
-    });
+    if (error.type) {
+      notification.create({
+        title: error.name,
+        content: error.message,
+        description: error.naiveDesc,
+        type: error.type,
+        duration: error.naiveDuration,
+      });
+    } else {
+      //Alerta
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "Error al registrar",
+        textMessage: `El intentar agregar al curso ${newCourse.name} ha ocurrido al siguiente error: ${error}`,
+      });
+    }
   }
 };
 
@@ -151,6 +171,29 @@ const updateCourse = (updatedCourse) => {
       isSuccess: false,
       textTitle: "Error al editar el curso!",
       textMessage: `Se produjo un error al intentar editar el curso ${updatedCourse.name}: ${error}`,
+    });
+  }
+};
+
+const validateCourseFields = (newCourse) => {
+  const requireFields = ["name", "description", "finished"];
+  const objFields = {
+    name: newCourse.name,
+    description: newCourse.description,
+    finished: newCourse.finished,
+  };
+  const omissions = validarCamposRequeridos(objFields, requireFields);
+  const listFormat = new Intl.ListFormat("es", {
+    style: "long",
+    type: "conjunction",
+  }).format(omissions);
+  if (omissions.length > 0) {
+    throw CrearObjError({
+      mensaje: `${listFormat} son requeridos!`,
+      type: "warning",
+      nombreError: "Campos requeridos",
+      naiveDesc: "Favor de llenar los campos requeridos",
+      naiveDuration: 5000,
     });
   }
 };
