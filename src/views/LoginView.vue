@@ -22,16 +22,6 @@ const user = ref({
  * @param {String} email
  * @return {Boolean} Retorna si es admin o no
  */
-const isAdmin = (email) => {
-  //Obtener todos los usuarios
-  const allUsers = getAllUsers();
-  console.log("allusers", allUsers);
-  //Buscar un usuario que corresponda al email
-  const user = allUsers.find((user) => user.email === email);
-  //Retornar el valor de isAdmin (true o false)
-  return user.isAdmin;
-};
-
 const onSubmit = () => {
   const userAuth = useAuthenticate(user.value);
   if (!userAuth) {
@@ -42,9 +32,7 @@ const onSubmit = () => {
       textMessage: `No ha sido posible iniciar sesion, verifica si la contraseña o el correo es correcto`,
     });
   } else {
-    //Si existe, checar si es teacher
-    //y redireccionar al user correspondiente
-    isAdmin(user.value.email)
+    userAuth.user.isAdmin
       ? router.push("/dashboard")
       : router.push("/home");
   }
