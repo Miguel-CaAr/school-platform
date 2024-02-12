@@ -76,7 +76,6 @@ const addCourse = (newCourse) => {
 };
 
 const deleteCourse = (courseToDelete) => {
-  console.log("deleteCourse");
   try {
     //Obtener cursos
     const courses = getCourses();

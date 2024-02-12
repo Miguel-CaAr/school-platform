@@ -76,7 +76,6 @@ const addStudent = (newStudent) => {
 };
 
 const deleteStudent = (studentToDelete) => {
-  console.log("deleteStudent");
   try {
     //Obtener alumnos
     const students = getStudents();
