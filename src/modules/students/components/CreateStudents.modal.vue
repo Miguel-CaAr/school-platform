@@ -69,6 +69,8 @@ const onlyAllowEmail = (value) => {
               :disabled="studentsStore.disabledInputsModal"
               placeholder="Nombre"
               :allow-input="onlyAllowLetters"
+              maxlength="80"
+              show-count
             ></NInput>
           </NFormItem>
           <NFormItem label="Correo del alumno">
@@ -79,6 +81,8 @@ const onlyAllowEmail = (value) => {
               placeholder="ejemplo@dominio.com"
               :status="_status"
               @update:value="onlyAllowEmail"
+              maxlength="60"
+              show-count
             ></NInput>
           </NFormItem>
           <NFormItem label="Contraseña del alumno">
@@ -86,6 +90,8 @@ const onlyAllowEmail = (value) => {
               v-model:value="studentsStore.student.password"
               :disabled="studentsStore.disabledInputsModal"
               placeholder="Contraseña"
+              maxlength="50"
+              show-count
             ></NInput>
           </NFormItem>
           <n-button

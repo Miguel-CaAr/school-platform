@@ -46,6 +46,8 @@ const onlyAllowLetters = (value) => /^[a-zA-Z\s]*$/.test(value);
               :disabled="courseStore.disabledInputsModal"
               placeholder="Nombre"
               :allow-input="onlyAllowLetters"
+              maxlength="50"
+              show-count
             ></NInput>
           </NFormItem>
           <NFormItem label="Descripcion del curso">
@@ -54,6 +56,8 @@ const onlyAllowLetters = (value) => /^[a-zA-Z\s]*$/.test(value);
               type="textarea"
               :disabled="courseStore.disabledInputsModal"
               placeholder="Descripcion"
+              maxlength="270"
+              show-count
             ></NInput>
           </NFormItem>
           <NFormItem label="Fecha de finalizacion del curso">
