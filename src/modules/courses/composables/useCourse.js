@@ -55,7 +55,7 @@ const addCourse = (newCourse) => {
     newCourse.id = generateId();
     //Se agrega el nuevo profe
     courses.push(newCourse);
-    //Para pushear la lista de cursos el nuevo curso
+    //Para pushear la lista de cursos con el nuevo curso
     courseStore.pushListcourses(courseStore.course);
     //Se guarda el arreglo actualizado (con el nuevo profe) en el localStorage
     localStorage.setItem("courses", JSON.stringify(courses));
@@ -75,8 +75,48 @@ const addCourse = (newCourse) => {
   }
 };
 
+const deleteCourse = (courseToDelete) => {
+  console.log("deleteCourse");
+  try {
+    //Obtener cursos
+    const courses = getCourses();
+    //Encontrar el indice del curso
+    const index = courses.findIndex(
+      (course) => course.id === courseToDelete.id
+    );
+    //Verificar si el profe existe
+    if (index !== -1) {
+      //Eliminar el profe
+      courses.splice(index, 1);
+      //Actualzar localStorage
+      localStorage.setItem("courses", JSON.stringify(courses));
+      //Alerta
+      alertStore.showAlert(true, {
+        isSuccess: true,
+        textTitle: "Eliminado!",
+        textMessage: `El curso ${courseToDelete.name} ha sido eliminado con exito`,
+      });
+    } else {
+      //Alerta
+      alertStore.showAlert(true, {
+        isSuccess: false,
+        textTitle: "No existe el curso",
+        textMessage: `El curso ${courseToDelete.name} aun no ha sido creado`,
+      });
+    }
+  } catch (error) {
+    //Alerta
+    alertStore.showAlert(true, {
+      isSuccess: false,
+      textTitle: "Error al eliminar el curso!",
+      textMessage: `El error al eliminar a ${courseToDelete.name} es el siguiente: ${error}`,
+    });
+  }
+};
+
 export default {
   addCourse,
   getCourses,
   preventDuplicate,
+  deleteCourse,
 };

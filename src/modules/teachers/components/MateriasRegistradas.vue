@@ -5,7 +5,7 @@ import { useCoursesStore } from "../../courses/store/CoursesStore";
 import { NButton } from "naive-ui";
 
 const courseStore = useCoursesStore();
-const { getCourses } = useCourse;
+const { getCourses, deleteCourse } = useCourse;
 const allCourses = getCourses();
 
 onMounted(() => {
@@ -91,7 +91,11 @@ const abrirModal = (course, esVer) => {
                 <NButton @click="" strong secondary type="info"
                   >Editar</NButton
                 >
-                <NButton @click="" strong secondary type="error"
+                <NButton
+                  @click="deleteCourse(course)"
+                  strong
+                  secondary
+                  type="error"
                   >Eliminar
                 </NButton>
               </td>
