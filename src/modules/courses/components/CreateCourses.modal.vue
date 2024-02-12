@@ -81,17 +81,25 @@ const editCourseButton = () => {
         :single-line="false"
       >
         <thead>
+          <tr class="text-center">
+            <th colspan="3">
+              Alumnos inscritos en {{ courseStore.course.name }}
+            </th>
+          </tr>
           <tr>
             <th>Nombre</th>
             <th>Calificacion</th>
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
+        <tbody v-if="courseStore.course.students.length > 0">
+          <tr
+            v-for="student in courseStore.course.students"
+            :key="student.id"
+          >
+            <td>{{ student.name }}</td>
+            <td>{{ student.grade }}</td>
+            <td>Options</td>
           </tr>
         </tbody>
       </NTable>
