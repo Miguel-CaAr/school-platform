@@ -59,7 +59,7 @@ const abrirModal = (course, esVer) => {
               <th
                 class="px-4 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                Opciones
+                Acciones
               </th>
             </tr>
           </thead>

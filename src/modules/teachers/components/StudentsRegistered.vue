@@ -59,7 +59,7 @@ const openModal = (students, isSee) => {
               <th
                 class="px-4 bg-gray-100 text-gray-500 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                ????
+                Acciones
               </th>
             </tr>
           </thead>
@@ -79,7 +79,7 @@ const openModal = (students, isSee) => {
                 {{ student.email }}
               </th>
               <!-- BOTONES DE OPCIONES -->
-              <!-- <td
+              <td
                 class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-1"
               >
                 <NButton
@@ -89,7 +89,7 @@ const openModal = (students, isSee) => {
                   type="success"
                   >Ver</NButton
                 >
-              </td> -->
+              </td>
             </tr>
           </tbody>
         </table>
