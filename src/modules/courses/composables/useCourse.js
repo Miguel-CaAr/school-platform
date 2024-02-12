@@ -86,8 +86,10 @@ const deleteCourse = (courseToDelete) => {
     );
     //Verificar si el profe existe
     if (index !== -1) {
-      //Eliminar el profe
+      //Eliminar el profe de localStorage
       courses.splice(index, 1);
+      //Eliminar de la lista de cursos
+      courseStore.listCourses.splice(index, 1);
       //Actualzar localStorage
       localStorage.setItem("courses", JSON.stringify(courses));
       //Alerta
