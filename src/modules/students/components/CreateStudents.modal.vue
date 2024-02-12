@@ -10,6 +10,11 @@ import {
 } from "naive-ui";
 import { useStudentsStore } from "../store/StudentsStore";
 import useStudent from "../composables/useStudent";
+import { createDiscreteApi } from "naive-ui";
+//Alerta del naive-ui
+const { notification } = createDiscreteApi(["notification"], {
+  notificationProviderProps: { max: 10, keepAliveOnHover: true },
+});
 //Store
 const studentsStore = useStudentsStore();
 //Estados
@@ -22,10 +27,12 @@ const createStudentButton = () => {
   if (_status.value === "success") {
     useStudent.addStudent(studentsStore.student);
   } else {
-    console.log(
-      _status.value,
-      "Se ingreso un correo invalido, implementar alerta con naive-ui"
-    );
+    notification.create({
+      title: "Correo invalido",
+      content: "Ingrese un correo valido",
+      type: "warning",
+      duration: 5000,
+    });
   }
 };
 
