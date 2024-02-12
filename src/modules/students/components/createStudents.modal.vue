@@ -67,7 +67,7 @@ const editStudentButton = () => {
             @click="editStudentButton"
             type="Info"
           >
-            Crear
+            Realizar edicion
           </n-button>
         </div>
       </NForm>
