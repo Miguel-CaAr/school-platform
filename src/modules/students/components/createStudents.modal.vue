@@ -14,7 +14,6 @@ const studentsStore = useStudentsStore();
 //Funciones
 const createStudentButton = () => {
   useStudent.addStudent(studentsStore.student);
-  studentsStore.showModalStudents(false);
 };
 
 const editStudentButton = () => {
