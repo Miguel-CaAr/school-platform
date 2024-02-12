@@ -89,6 +89,13 @@ const openModal = (students, isSee) => {
                   type="success"
                   >Ver</NButton
                 >
+                <NButton
+                  @click="deleteStudent(student)"
+                  strong
+                  secondary
+                  type="error"
+                  >Eliminar
+                </NButton>
               </td>
             </tr>
           </tbody>
