@@ -12,11 +12,19 @@ onMounted(() => {
   courseStore.fillListCourses(allCourses);
 });
 
-const abrirModal = (course, esVer) => {
-  if (esVer) {
+const openModal = (course, isSee) => {
+  if (isSee) {
     courseStore.fillCoursesData(course);
     courseStore.disabledInputsModal = true;
     courseStore.buttonCreate = false;
+    courseStore.buttonEdit = false;
+    courseStore.showModalCourses(true);
+  } else {
+    //Entonces isEdit
+    courseStore.fillCoursesData(course);
+    courseStore.disabledInputsModal = false;
+    courseStore.buttonCreate = false;
+    courseStore.buttonEdit = true;
     courseStore.showModalCourses(true);
   }
 };
@@ -82,13 +90,17 @@ const abrirModal = (course, esVer) => {
                 class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-1"
               >
                 <NButton
-                  @click="abrirModal(course, true)"
+                  @click="openModal(course, true)"
                   strong
                   secondary
                   type="success"
                   >Ver</NButton
                 >
-                <NButton @click="" strong secondary type="info"
+                <NButton
+                  @click="openModal(course, false)"
+                  strong
+                  secondary
+                  type="info"
                   >Editar</NButton
                 >
                 <NButton

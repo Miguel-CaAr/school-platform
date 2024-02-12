@@ -15,6 +15,7 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
   const modalCourse = ref(false);
   const disabledInputsModal = ref(false);
   const buttonCreate = ref(false);
+  const buttonEdit = ref(false);
 
   //Funciones
   function fillCoursesData(_course) {
@@ -75,6 +76,7 @@ export const useCoursesStore = defineStore("CoursesStore", () => {
     listCourses,
     disabledInputsModal,
     buttonCreate,
+    buttonEdit,
     //Funciones
     fillCoursesData,
     cleanCoursesState,

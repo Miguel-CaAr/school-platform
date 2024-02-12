@@ -56,9 +56,12 @@ const createCourseButton = () => {
           <n-button
             v-if="courseStore.buttonCreate"
             @click="createCourseButton"
-            type="primary"
+            type="success"
           >
             Crear
+          </n-button>
+          <n-button v-if="courseStore.buttonEdit" @click="" type="info">
+            Realizar edicion
           </n-button>
         </div>
       </NForm>
