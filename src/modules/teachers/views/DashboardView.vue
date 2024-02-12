@@ -28,6 +28,7 @@ const buttonCreateStudent = () => {
   studentsStore.showModalStudents();
   studentsStore.disabledInputsModal = false;
   studentsStore.buttonCreate = true;
+  studentsStore.buttonEdit = false;
 };
 </script>
 

@@ -58,6 +58,9 @@ const createStudentButton = () => {
           >
             Crear
           </n-button>
+          <n-button v-if="studentsStore.buttonEdit" @click="" type="Info">
+            Crear
+          </n-button>
         </div>
       </NForm>
     </NCard>

@@ -17,6 +17,13 @@ const openModal = (students, isSee) => {
     studentStore.fillStudentsData(students);
     studentStore.disabledInputsModal = true;
     studentStore.buttonCreate = false;
+    studentStore.buttonEdit = false;
+    studentStore.showModalStudents(true);
+  } else {
+    studentStore.fillStudentsData(students);
+    studentStore.disabledInputsModal = false;
+    studentStore.buttonCreate = false;
+    studentStore.buttonEdit = true;
     studentStore.showModalStudents(true);
   }
 };
@@ -88,6 +95,13 @@ const openModal = (students, isSee) => {
                   secondary
                   type="success"
                   >Ver</NButton
+                >
+                <NButton
+                  @click="openModal(student, false)"
+                  strong
+                  secondary
+                  type="info"
+                  >Editar</NButton
                 >
                 <NButton
                   @click="deleteStudent(student)"

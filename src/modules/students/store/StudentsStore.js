@@ -14,6 +14,7 @@ export const useStudentsStore = defineStore("StudentsStore", () => {
   const modalStudent = ref(false);
   const disabledInputsModal = ref(false);
   const buttonCreate = ref(false);
+  const buttonEdit = ref(false);
 
   //Funciones
   function fillStudentsData(_student) {
@@ -72,6 +73,7 @@ export const useStudentsStore = defineStore("StudentsStore", () => {
     listStudents,
     disabledInputsModal,
     buttonCreate,
+    buttonEdit,
     //Funciones
     fillStudentsData,
     cleanStudentState,
