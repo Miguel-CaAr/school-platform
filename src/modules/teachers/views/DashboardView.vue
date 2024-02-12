@@ -1,11 +1,14 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import CreateCourses from "../../courses/components/CreateCourses.modal.vue";
+import CreateStudents from "../../students/components/createStudents.modal.vue";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
+import { useStudentsStore } from "../../students/store/StudentsStore";
 import MateriasRegistradas from "../../teachers/components/MateriasRegistradas.vue";
 import Alert from "@/components/Alert.vue";
 import { useAlertStore } from "@/stores/AlertStore";
 const courseStore = useCoursesStore();
+const studentsStore = useStudentsStore();
 const alertStore = useAlertStore();
 
 //Functions helpers
@@ -17,6 +20,12 @@ const buttonCreateCourse = () => {
   courseStore.showModalCourses();
   courseStore.disabledInputsModal = false;
   courseStore.buttonCreate = true;
+};
+
+const buttonCreateStudent = () => {
+  studentsStore.showModalStudents();
+  studentsStore.disabledInputsModal = false;
+  studentsStore.buttonCreate = true;
 };
 </script>
 
@@ -355,7 +364,8 @@ const buttonCreateCourse = () => {
               <p>Materia</p>
             </div>
           </button>
-          <div
+          <button
+            @click="buttonCreateStudent"
             class="cursor-pointer bg-blue-500 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 text-white font-medium group"
           >
             <div
@@ -389,7 +399,7 @@ const buttonCreateCourse = () => {
               <p class="text-2xl">Registrar</p>
               <p>Alumno</p>
             </div>
-          </div>
+          </button>
         </div>
         <!-- Informacion Cards -->
 
@@ -484,6 +494,7 @@ const buttonCreateCourse = () => {
       </div>
     </div>
     <CreateCourses />
+    <CreateStudents />
     <Alert
       :show-modal="alertStore.show"
       :success="alertStore.success"
