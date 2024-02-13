@@ -54,13 +54,16 @@ getSelectOption();
               :options="coursesSelect"
             />
             <NSelect
-              v-model:value="enrollementsStore.enroll.student"
+              v-model:value="enrollementsStore.enroll.student_id"
               :disabled="enrollementsStore.enroll.course_id === null"
               :options="studentsSelect"
               :multiple="true"
             />
           </NSpace>
-          <NButton class="mt-4" type="success"
+          <NButton
+            :disabled="enrollementsStore.enroll.student_id === null"
+            class="mt-4"
+            type="success"
             >Realizar inscripcion
           </NButton>
         </div>
