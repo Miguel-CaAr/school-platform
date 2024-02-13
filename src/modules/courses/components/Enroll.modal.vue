@@ -1,27 +1,39 @@
 <script setup>
 import { NModal, NCard, NForm, NButton, NSpace, NSelect } from "naive-ui";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useEnrollementsStore } from "../store/EnrollementsStore";
-import useCourse from "../composables/useCourse";
-import useStudent from "../../students/composables/useStudent";
+import { useCoursesStore } from "../store/CoursesStore";
+import { useStudentsStore } from "../../students/store/StudentsStore";
+//STORES
 const enrollementsStore = useEnrollementsStore();
-const allCourses = useCourse.getCourses();
-const allStudents = useStudent.getStudents();
+const coursesStore = useCoursesStore();
+const studentsStore = useStudentsStore();
 //ESTADOS
 const student = ref(null);
 const course = ref(null);
-// Object.keys(allCourses).map((key) => console.log(allCourses[key]));
-const coursesSelect = Object.keys(allCourses).map((key) => ({
-  label: allCourses[key].name,
-  value: allCourses[key].name,
-  // disabled: true,
-}));
-
-const studentsSelect = Object.keys(allStudents).map((key) => ({
-  label: allStudents[key].name,
-  value: allStudents[key].name,
-  // disabled: true,
-}));
+const coursesSelect = ref([]);
+const studentsSelect = ref([]);
+//FUNCIONES
+const getSelectOption = () => {
+  coursesSelect.value = Object.keys(coursesStore.listCourses).map(
+    (key) => ({
+      label: coursesStore.listCourses[key].name,
+      value: coursesStore.listCourses[key].name,
+      // disabled: true,
+    })
+  );
+  studentsSelect.value = Object.keys(studentsStore.listStudents).map(
+    (key) => ({
+      label: studentsStore.listStudents[key].name,
+      value: studentsStore.listStudents[key].name,
+      // disabled: true,
+    })
+  );
+};
+watch([coursesStore.listCourses, studentsStore.listStudents], () => {
+  getSelectOption();
+});
+getSelectOption();
 </script>
 
 <template>
