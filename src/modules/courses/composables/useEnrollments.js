@@ -1,8 +1,13 @@
 import { useAlertStore } from "../../../stores/AlertStore";
 import { useEnrollementsStore } from "../store/EnrollementsStore";
+import { createDiscreteApi } from "naive-ui";
 //STORES
 const enrollementsStore = useEnrollementsStore();
 const alertStore = useAlertStore();
+//GLOBAL CONFIG
+const { notification } = createDiscreteApi(["notification"], {
+  notificationProviderProps: { max: 10, keepAliveOnHover: true },
+});
 //FUNCIONES
 const getEnrollements = () => {
   try {
@@ -51,7 +56,13 @@ const enrollStudent = (newStudent, course) => {
   //Se verifica si el alumno ya esta inscritro
   const isAlreadyEnrolled = enrollements[index].student_id.includes(newStudent);
   if (!isAlreadyEnrolled) {
-    alert("El alumno ya está inscrito en este curso.");
+    notification.create({
+      title: "No es posible inscribir al alumno",
+      content: `El alumno ya se encuentra inscrito en el curso`,
+      description: `Intente con otro alumno`,
+      type: "warning",
+      duration: 5000,
+    });
     return;
   }
   //Se añade el nuevo alumno
@@ -82,12 +93,14 @@ const addEnroll = (newEnroll) => {
     //Se guarda el arreglo actualizado (con la nueva inscripcion) en el localStorage
     localStorage.setItem("enrollements", JSON.stringify(enrollements));
     //Alerta
-    alertStore.showAlert(true, {
-      isSuccess: true,
-      textTitle: "Inscripcion hecha!",
-      textMessage: `El alumno ${newEnroll.student_id} ha sido inscrito a ${newEnroll.course_id}`,
+    notification.create({
+      title: "Inscripcion hecha!",
+      content: `El alumno ${newEnroll.student_id} ha sido inscrito a ${newEnroll.course_id}`,
+      description: `Alumno inscrito`,
+      type: "success",
+      duration: 5000,
     });
-    enrollementsStore.showModalEnroll(false);
+    enrollementsStore.cleanEnrollState();
   } catch (error) {
     enrollementsStore.showModalEnroll(false);
     //Alerta

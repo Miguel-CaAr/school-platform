@@ -102,9 +102,7 @@ const deleteCourse = (courseToDelete) => {
     //Obtener cursos
     const courses = getCourses();
     //Encontrar el indice del curso
-    const index = courses.findIndex(
-      (course) => course.id === courseToDelete.id
-    );
+    const index = courses.findIndex((course) => course.id === courseToDelete.id);
     //Verificar si el profe existe
     if (index !== -1) {
       //Eliminar el profe de localStorage
@@ -143,9 +141,7 @@ const updateCourse = (updatedCourse) => {
     //Obtener cursos
     const courses = getCourses();
     //Encontrar el índice del curso
-    const index = courses.findIndex(
-      (course) => course.id === updatedCourse.id
-    );
+    const index = courses.findIndex((course) => course.id === updatedCourse.id);
     //Verificar si el curso existe
     if (index !== -1) {
       //Actualizar el curso en el arreglo de cursos
