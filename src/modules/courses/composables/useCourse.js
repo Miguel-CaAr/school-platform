@@ -44,10 +44,12 @@ const generateId = () => {
 const preventDuplicate = (newCourse, allCourses) => {
   //Se evita que se agregue un curso ya registrado
   if (allCourses.some((course) => course.name === newCourse.name)) {
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "El curso ya existe",
-      textMessage: `El curso con el name ${newCourse.name} ya se encuentra registrado`,
+    notification.create({
+      title: "Datos invalidos",
+      content: `Intente con otro nombre`,
+      description: `El nombre ya pertenece a otra materia registrada`,
+      type: "warning",
+      duration: 5000,
     });
     return true;
   }

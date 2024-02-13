@@ -44,10 +44,12 @@ const generateId = () => {
 const preventDuplicate = (newStudent, allStudents) => {
   //Se evita que se agregue un alumno ya registrado
   if (allStudents.some((student) => student.email === newStudent.email)) {
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "El alumno ya existe",
-      textMessage: `El alumno con el name ${newStudent.email} ya se encuentra registrado`,
+    notification.create({
+      title: "Datos invalidos",
+      content: `Intente con otro correo`,
+      description: `El correo ya pertenece a otro usuario`,
+      type: "warning",
+      duration: 5000,
     });
     return true;
   }
