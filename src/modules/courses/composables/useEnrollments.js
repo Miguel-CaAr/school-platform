@@ -7,12 +7,9 @@ const alertStore = useAlertStore();
 const getEnrollements = () => {
   try {
     //Obtener el valor del localStorage
-    const enrollementsString =
-      localStorage.getItem("enrollements") ?? null;
+    const enrollementsString = localStorage.getItem("enrollements") ?? null;
     //Verificar si hay algo almacenado y parsearlo a un array
-    const enrollements = enrollementsString
-      ? JSON.parse(enrollementsString)
-      : [];
+    const enrollements = enrollementsString ? JSON.parse(enrollementsString) : [];
     return enrollements;
   } catch (error) {
     //Alerta
@@ -37,16 +34,37 @@ const generateId = () => {
 };
 
 const preventDuplicate = (newEnroll, allEnrollements) => {
-  //Se evita que se agregue una inscripcion ya registrada
-  if (allEnrollements.some((enroll) => enroll.name === newEnroll.name)) {
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "El alumno ya esta inscrito",
-      textMessage: `El alumno ${newEnroll.student_id} ya se encuentra inscrito en ${newEnroll.course_id}`,
-    });
+  //Se verifica el curso existe en la tabla "inscripciones"
+  if (allEnrollements.some((enroll) => enroll.course_id === newEnroll.course_id)) {
+    //Incscribimos al alumno
+    enrollStudent(newEnroll.student_id, newEnroll.course_id);
     enrollementsStore.showModalEnroll(false);
     return true;
   }
+};
+
+const enrollStudent = (newStudent, course) => {
+  //Se obtienen las inscripciones del localStorage
+  const enrollements = getEnrollements();
+  //Encontrar el índice del curso
+  const index = enrollements.findIndex((enroll) => enroll.course_id === course);
+  //Se verifica si el alumno ya esta inscritro
+  const isAlreadyEnrolled = enrollements[index].student_id.includes(newStudent);
+  if (!isAlreadyEnrolled) {
+    alert("El alumno ya está inscrito en este curso.");
+    return;
+  }
+  //Se añade el nuevo alumno
+  enrollements[index].student_id.push(...newStudent);
+  //Actualizar el localStorage
+  localStorage.setItem("enrollements", JSON.stringify(enrollements));
+  enrollementsStore.showModalEnroll(false);
+  //Alerta
+  alertStore.showAlert(true, {
+    isSuccess: true,
+    textTitle: "Inscripcion hecha!",
+    textMessage: `Se ha inscrito a a ${newStudent}`,
+  });
 };
 
 const addEnroll = (newEnroll) => {
@@ -86,9 +104,7 @@ const deleteEnroll = (enrollToDelete) => {
     //Obtener cursos
     const enrollements = getEnrollements();
     //Encontrar el indice de la inscripcion
-    const index = enrollements.findIndex(
-      (enroll) => enroll.id === enrollToDelete.id
-    );
+    const index = enrollements.findIndex((enroll) => enroll.id === enrollToDelete.id);
     //Verificar si la inscripcion existe
     if (index !== -1) {
       //Eliminar la inscripcion de localStorage
