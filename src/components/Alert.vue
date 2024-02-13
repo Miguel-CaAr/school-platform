@@ -96,6 +96,7 @@ const { showModal, success, title, message } = toRefs(props);
 
 <style scoped>
 .background {
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.344);
   position: absolute;
   top: 0;
