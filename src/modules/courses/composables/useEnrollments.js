@@ -1,7 +1,9 @@
 import { useAlertStore } from "../../../stores/AlertStore";
 import { useEnrollementsStore } from "../store/EnrollementsStore";
+//STORES
+const enrollementsStore = useEnrollementsStore();
 const alertStore = useAlertStore();
-
+//FUNCIONES
 const getEnrollements = () => {
   try {
     //Obtener el valor del localStorage
@@ -26,7 +28,7 @@ const getEnrollements = () => {
 const generateId = () => {
   //Obtener todos las inscripciones
   const enrollements = getEnrollements();
-  if (enrollementss.length === 0) {
+  if (enrollements.length === 0) {
     return 1; //No hay inscripciones, primer ID es 1
   } else {
     //Obtener el ultimo ID de las inscripciones y sumarle 1
@@ -42,6 +44,7 @@ const preventDuplicate = (newEnroll, allEnrollements) => {
       textTitle: "El alumno ya esta inscrito",
       textMessage: `El alumno ${newEnroll.student_id} ya se encuentra inscrito en ${newEnroll.course_id}`,
     });
+    enrollementsStore.showModalEnroll(false);
     return true;
   }
 };
@@ -66,7 +69,9 @@ const addEnroll = (newEnroll) => {
       textTitle: "Inscripcion hecha!",
       textMessage: `El alumno ${newEnroll.student_id} ha sido inscrito a ${newEnroll.course_id}`,
     });
+    enrollementsStore.showModalEnroll(false);
   } catch (error) {
+    enrollementsStore.showModalEnroll(false);
     //Alerta
     alertStore.showAlert(true, {
       isSuccess: false,
