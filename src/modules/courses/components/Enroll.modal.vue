@@ -1,6 +1,6 @@
 <script setup>
 import { NModal, NCard, NForm, NButton, NSpace, NSelect } from "naive-ui";
-import { ref, watch } from "vue";
+import { onMounted, ref, watch, computed } from "vue";
 import { useEnrollementsStore } from "../store/EnrollementsStore";
 import { useCoursesStore } from "../store/CoursesStore";
 import { useStudentsStore } from "../../students/store/StudentsStore";
@@ -9,30 +9,24 @@ import useEnrollments from "../composables/useEnrollments";
 const enrollementsStore = useEnrollementsStore();
 const coursesStore = useCoursesStore();
 const studentsStore = useStudentsStore();
-//ESTADOS
-const coursesSelect = ref([]);
-const studentsSelect = ref([]);
 //FUNCIONES
-const getSelectOption = () => {
-  coursesSelect.value = Object.keys(coursesStore.listCourses).map(
-    (key) => ({
-      label: coursesStore.listCourses[key].name,
-      value: coursesStore.listCourses[key].name,
-      // disabled: true,
-    })
-  );
-  studentsSelect.value = Object.keys(studentsStore.listStudents).map(
-    (key) => ({
-      label: studentsStore.listStudents[key].name,
-      value: studentsStore.listStudents[key].email,
-      // disabled: true,
-    })
-  );
-};
-watch([coursesStore.listCourses, studentsStore.listStudents], () => {
-  getSelectOption();
+const coursesOptions = computed(() => {
+  return coursesStore.listCourses.map((_curso) => {
+    return {
+      value: _curso.id,
+      label: _curso.name,
+    };
+  });
 });
-getSelectOption();
+
+const studentsOptions = computed(() => {
+  return studentsStore.listStudents.map((_alumno) => {
+    return {
+      value: _alumno.id,
+      label: _alumno.name,
+    };
+  });
+});
 
 const createEnrollButton = () => {
   useEnrollments.addEnroll(enrollementsStore.enroll);
@@ -56,12 +50,14 @@ const createEnrollButton = () => {
           <NSpace vertical>
             <NSelect
               v-model:value="enrollementsStore.enroll.course_id"
-              :options="coursesSelect"
+              :clearable="true"
+              :filterable="true"
+              :options="coursesOptions"
             />
             <NSelect
               v-model:value="enrollementsStore.enroll.student_id"
               :disabled="enrollementsStore.enroll.course_id === null"
-              :options="studentsSelect"
+              :options="studentsOptions"
               :multiple="true"
             />
           </NSpace>
