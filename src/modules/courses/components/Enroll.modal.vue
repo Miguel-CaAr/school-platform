@@ -9,8 +9,6 @@ const enrollementsStore = useEnrollementsStore();
 const coursesStore = useCoursesStore();
 const studentsStore = useStudentsStore();
 //ESTADOS
-const student = ref(null);
-const course = ref(null);
 const coursesSelect = ref([]);
 const studentsSelect = ref([]);
 //FUNCIONES
@@ -45,15 +43,19 @@ getSelectOption();
     :style="{
       width: '40%',
     }"
+    @after-leave="enrollementsStore.cleanEnrollState"
   >
     <NCard>
       <NForm>
         <div>
           <NSpace vertical>
-            <NSelect v-model:value="course" :options="coursesSelect" />
             <NSelect
-              v-model:value="student"
-              :disabled="course === null"
+              v-model:value="enrollementsStore.enroll.course_id"
+              :options="coursesSelect"
+            />
+            <NSelect
+              v-model:value="enrollementsStore.enroll.student"
+              :disabled="enrollementsStore.enroll.course_id === null"
               :options="studentsSelect"
               :multiple="true"
             />
