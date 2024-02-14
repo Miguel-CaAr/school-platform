@@ -67,6 +67,8 @@ const enrollStudent = (newStudent, course) => {
     } else {
       // Si el estudiante no está inscrito, agregarlo a la lista de estudiantes inscritos
       enrollements[index].student_id.push(studentId);
+      //Pushea al estudiante dentro de la lista de inscripciones en el curso inscrito.
+      enrollementsStore.pushStudentInListEnrollements(index, studentId);
       notification.create({
         title: `Se inscribio al alumno`,
         content: `El alumno con ID ${studentId} se ha inscrito en el curso ${course}`,
@@ -94,6 +96,8 @@ const addEnroll = (newEnroll) => {
     enrollements.push(newEnroll);
     //* Para pushear la lista de inscripciones con la nueva inscripcion
     //* enrollementsStore.pushListEnrollements(enrollementsStore.enroll);
+    //Para pushear la lista de inscripciones con la nueva inscripcion
+    enrollementsStore.pushListEnrollements(enrollementsStore.enroll);
     //Se guarda el arreglo actualizado (con la nueva inscripcion) en el localStorage
     localStorage.setItem("enrollements", JSON.stringify(enrollements));
     //Alerta

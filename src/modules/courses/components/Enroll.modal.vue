@@ -5,10 +5,12 @@ import { useEnrollementsStore } from "../store/EnrollementsStore";
 import { useCoursesStore } from "../store/CoursesStore";
 import { useStudentsStore } from "../../students/store/StudentsStore";
 import useEnrollments from "../composables/useEnrollments";
+const { getEnrollements } = useEnrollments;
 //STORES
 const enrollementsStore = useEnrollementsStore();
 const coursesStore = useCoursesStore();
 const studentsStore = useStudentsStore();
+const allEnrollements = getEnrollements();
 //FUNCIONES
 const coursesOptions = computed(() => {
   return coursesStore.listCourses.map((_curso) => {
@@ -31,6 +33,9 @@ const studentsOptions = computed(() => {
 const createEnrollButton = () => {
   useEnrollments.addEnroll(enrollementsStore.enroll);
 };
+onMounted(() => {
+  enrollementsStore.fillListEnrolled(allEnrollements);
+});
 </script>
 
 <template>
