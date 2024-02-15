@@ -9,9 +9,9 @@ export const useAuthenticate = (_user) => {
   let usersStudents = [];
   let users = [];
   //Obtener profesores valor del localStorage
-  usersTeachers = JSON.parse(localStorage.getItem("teachers") ?? []);
+  usersTeachers = JSON.parse(localStorage.getItem("teachers")) ?? [];
   //Obtener alumnos valor del localStorage
-  usersStudents = JSON.parse(localStorage.getItem("students") ?? []);
+  usersStudents = JSON.parse(localStorage.getItem("students")) ?? [];
 
   users = [...usersTeachers, ...usersStudents];
 
