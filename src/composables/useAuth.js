@@ -4,7 +4,6 @@
  * @param {Boolean} type Determina si el usuario es de tipo profesor
  */
 export const useAuthenticate = (_user) => {
-  console.log("usuario", _user);
   let usersTeachers = [];
   let usersStudents = [];
   let users = [];
@@ -18,13 +17,13 @@ export const useAuthenticate = (_user) => {
   const user = users.filter(
     (user) => user.email === _user.email && user.password == _user.password
   )[0];
-  if (user.length <= 0) {
+  if (user === undefined) {
     return false;
+  } else {
+    const userAuth = {
+      user,
+      isValid: true,
+    };
+    return userAuth;
   }
-
-  const userAuth = {
-    user,
-    isValid: true,
-  };
-  return userAuth;
 };

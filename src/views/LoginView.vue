@@ -5,17 +5,22 @@ import { useAuthenticate } from "@/composables/useAuth";
 import { useAlertStore } from "@/stores/AlertStore";
 import Alert from "@/components/Alert.vue";
 import { getAllUsers } from "@/composables/useAllUsers";
+import { createDiscreteApi } from "naive-ui";
 const alertStore = useAlertStore();
 const router = useRouter();
-
-const onCloseModal = (show) => {
-  alertStore.show = show;
-};
-
+//ESTADOS
 const user = ref({
   email: null,
   password: null,
 });
+//ALERTA
+const { notification } = createDiscreteApi(["notification"], {
+  notificationProviderProps: { max: 10, keepAliveOnHover: true },
+});
+//FUNCIONES
+const onCloseModal = (show) => {
+  alertStore.show = show;
+};
 
 /**
  * Determina si el usuario que corresponde al email del argumento entrante es admin
@@ -25,11 +30,17 @@ const user = ref({
 const onSubmit = () => {
   const userAuth = useAuthenticate(user.value);
   if (!userAuth) {
+    //Se limpian inputs
+    user.value = {
+      email: null,
+      password: null,
+    }
     //Si no existe el usuario en la BD
-    alertStore.showAlert(true, {
-      isSuccess: false,
-      textTitle: "Correo o contraseña incorrecta!",
-      textMessage: `No ha sido posible iniciar sesion, verifica si la contraseña o el correo es correcto`,
+    notification.create({
+      title: "Correo o contraseña incorrecta!",
+      content: "No ha sido posible iniciar sesion, verifica si la contraseña o el correo es correcto",
+      type: "warning",
+      duration: 5000,
     });
   } else {
     userAuth.user.isAdmin
