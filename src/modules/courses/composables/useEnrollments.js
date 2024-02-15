@@ -1,5 +1,6 @@
 import { useAlertStore } from "../../../stores/AlertStore";
 import { useEnrollementsStore } from "../store/EnrollementsStore";
+import useStudent from "../../students/composables/useStudent";
 import { createDiscreteApi } from "naive-ui";
 //STORES
 const enrollementsStore = useEnrollementsStore();
@@ -158,9 +159,30 @@ const deleteEnroll = (enrollToDelete) => {
   }
 };
 
+const getEnrolledStudents = (course) => {
+  let studentsEnrolled = []
+  const allStudents = useStudent.getStudents();
+  const allEnrollements = getEnrollements();
+
+  allStudents.forEach((student)=>{
+    allEnrollements.forEach((enroll)=>{
+      enroll.student_id.find((id)=>{
+        if (id === student.id) {
+          if (enroll.course_id === course.id) {
+            studentsEnrolled.push(student.name)
+          }
+        }
+      })
+    })
+  })
+  console.log(studentsEnrolled);
+  return studentsEnrolled
+};
+
 export default {
   addEnroll,
   getEnrollements,
   preventDuplicate,
   deleteEnroll,
+  getEnrolledStudents,
 };
