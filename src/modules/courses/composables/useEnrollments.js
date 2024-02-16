@@ -95,8 +95,6 @@ const addEnroll = (newEnroll) => {
     newEnroll.id = generateId();
     //Se agrega la nueva inscripcion
     enrollements.push(newEnroll);
-    //* Para pushear la lista de inscripciones con la nueva inscripcion
-    //* enrollementsStore.pushListEnrollements(enrollementsStore.enroll);
     //Para pushear la lista de inscripciones con la nueva inscripcion
     enrollementsStore.pushListEnrollements(enrollementsStore.enroll);
     //Se guarda el arreglo actualizado (con la nueva inscripcion) en el localStorage
