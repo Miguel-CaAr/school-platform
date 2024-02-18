@@ -9,6 +9,7 @@ export const useEnrollementsStore = defineStore("EnrollmentsStore", () => {
     student_id: null,
   });
   const listEnrolled = ref([]);
+  const listStudentsEnrolled = ref([]);
   //Funciones
   function showModalEnroll(show = true) {
     if (show !== Boolean(show)) {
@@ -48,6 +49,7 @@ export const useEnrollementsStore = defineStore("EnrollmentsStore", () => {
     modalEnroll,
     enroll,
     listEnrolled,
+    listStudentsEnrolled,
     //Funciones
     showModalEnroll,
     cleanEnrollState,

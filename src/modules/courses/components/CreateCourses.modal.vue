@@ -10,6 +10,7 @@ import {
   NTable,
 } from "naive-ui";
 import { useCoursesStore } from "../store/CoursesStore";
+import { useEnrollementsStore } from "../store/EnrollementsStore";
 import useCourse from "../composables/useCourse";
 //Store
 const courseStore = useCoursesStore();
@@ -27,68 +28,33 @@ const onlyAllowLetters = (value) => /^[a-zA-Z\s]*$/.test(value);
 </script>
 
 <template>
-  <NModal
-    v-model:show="courseStore.modalCourse"
-    :title="'Curso'"
-    :mask-closable="true"
-    :preset="'card'"
-    :style="{
-      width: '50%',
-    }"
-    @after-leave="courseStore.cleanCoursesState"
-  >
+  <NModal v-model:show="courseStore.modalCourse" :title="'Curso'" :mask-closable="true" :preset="'card'" :style="{
+    width: '50%',
+  }" @after-leave="courseStore.cleanCoursesState">
     <NCard>
       <NForm>
         <div>
           <NFormItem label="Nombre del curso">
-            <NInput
-              v-model:value="courseStore.course.name"
-              :disabled="courseStore.disabledInputsModal"
-              placeholder="Nombre"
-              :allow-input="onlyAllowLetters"
-              maxlength="50"
-              show-count
-            ></NInput>
+            <NInput v-model:value="courseStore.course.name" :disabled="courseStore.disabledInputsModal"
+              placeholder="Nombre" :allow-input="onlyAllowLetters" maxlength="50" show-count></NInput>
           </NFormItem>
           <NFormItem label="Descripcion del curso">
-            <NInput
-              v-model:value="courseStore.course.description"
-              type="textarea"
-              :disabled="courseStore.disabledInputsModal"
-              placeholder="Descripcion"
-              maxlength="270"
-              show-count
-            ></NInput>
+            <NInput v-model:value="courseStore.course.description" type="textarea"
+              :disabled="courseStore.disabledInputsModal" placeholder="Descripcion" maxlength="270" show-count></NInput>
           </NFormItem>
           <NFormItem label="Fecha de finalizacion del curso">
-            <NDatePicker
-              v-model:value="courseStore.course.finished"
-              type="date"
-              :disabled="courseStore.disabledInputsModal"
-              placeholder="AAAA/MM/DD"
-            ></NDatePicker>
+            <NDatePicker v-model:value="courseStore.course.finished" type="date"
+              :disabled="courseStore.disabledInputsModal" placeholder="AAAA/MM/DD"></NDatePicker>
           </NFormItem>
-          <n-button
-            v-if="courseStore.buttonCreate"
-            @click="createCourseButton"
-            type="success"
-          >
+          <n-button v-if="courseStore.buttonCreate" @click="createCourseButton" type="success">
             Crear
           </n-button>
-          <n-button
-            v-if="courseStore.buttonEdit"
-            @click="editCourseButton"
-            type="info"
-          >
+          <n-button v-if="courseStore.buttonEdit" @click="editCourseButton" type="info">
             Realizar edicion
           </n-button>
         </div>
       </NForm>
-      <NTable
-        v-if="!courseStore.buttonCreate && !courseStore.buttonEdit"
-        :bordered="false"
-        :single-line="false"
-      >
+      <NTable v-if="!courseStore.buttonCreate && !courseStore.buttonEdit" :bordered="false" :single-line="false">
         <thead>
           <tr class="text-center">
             <th colspan="3">
@@ -101,17 +67,14 @@ const onlyAllowLetters = (value) => /^[a-zA-Z\s]*$/.test(value);
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody v-if="courseStore.course.students.length > 0">
-          <tr
-            v-for="student in courseStore.course.students"
-            :key="student.id"
-          >
-            <td>{{ student.name }}</td>
-            <td>{{ student.grade }}</td>
+        <tbody v-if="useEnrollementsStore.listStudentsEnrolled.length > 0">
+          <tr v-for="student in useEnrollementsStore.listStudentsEnrolled" :key="student.id">
+            <td>{{ student }}</td>
+            <td>grade</td>
             <td>Options</td>
           </tr>
         </tbody>
-        <tbody v-if="courseStore.course.students.length < 1">
+        <tbody v-if="useEnrollementsStore.listStudentsEnrolled.length < 1">
           <tr class="text-center">
             <td colspan="3">No hay alumnos inscritos</td>
           </tr>

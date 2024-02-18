@@ -158,23 +158,28 @@ const deleteEnroll = (enrollToDelete) => {
 };
 
 const getEnrolledStudents = (course) => {
-  let studentsEnrolled = []
+  let studentsEnrolled = [];
   const allStudents = useStudent.getStudents();
   const allEnrollements = getEnrollements();
 
-  allStudents.forEach((student)=>{
-    allEnrollements.forEach((enroll)=>{
-      enroll.student_id.find((id)=>{
+  allStudents.forEach((student) => {
+    allEnrollements.forEach((enroll) => {
+      enroll.student_id.find((id) => {
         if (id === student.id) {
           if (enroll.course_id === course.id) {
-            studentsEnrolled.push(student.name)
+            studentsEnrolled.push(student.name);
           }
         }
-      })
-    })
-  })
-  console.log(studentsEnrolled);
-  return studentsEnrolled
+      });
+    });
+  });
+  useEnrollementsStore.listStudentsEnrolled = studentsEnrolled;
+  console.log(
+    "listStudensEntolled: ",
+    useEnrollementsStore.listStudentsEnrolled,
+    "\n studentsEntolled: ",
+    studentsEnrolled
+  );
 };
 
 export default {
