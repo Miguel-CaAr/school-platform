@@ -174,12 +174,6 @@ const getEnrolledStudents = (course) => {
     });
   });
   useEnrollementsStore.listStudentsEnrolled = studentsEnrolled;
-  console.log(
-    "listStudensEntolled: ",
-    useEnrollementsStore.listStudentsEnrolled,
-    "\n studentsEntolled: ",
-    studentsEnrolled
-  );
 };
 
 export default {
