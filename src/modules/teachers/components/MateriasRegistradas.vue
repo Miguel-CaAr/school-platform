@@ -3,17 +3,21 @@ import { onMounted } from "vue";
 import useCourse from "../../courses/composables/useCourse";
 import useEnrollments from "../../courses/composables/useEnrollments";
 import { useCoursesStore } from "../../courses/store/CoursesStore";
+import { useEnrollementsStore } from "../../courses/store/EnrollementsStore";
 import { NButton } from "naive-ui";
-
+import { getNumberOfStudents } from "../../global/utils/utils"
+//Stores
+const enrollementsStore = useEnrollementsStore();
 const courseStore = useCoursesStore();
+//Composables
 const { getCourses, deleteCourse } = useCourse;
-const { getEnrolledStudents } = useEnrollments
+const { getEnrollements, getEnrolledStudents } = useEnrollments
+//Data
 const allCourses = getCourses();
-
-onMounted(() => {
-  courseStore.fillListCourses(allCourses);
-});
-
+const allEnrollements = getEnrollements()
+courseStore.fillListCourses(allCourses);
+enrollementsStore.fillListEnrolled(allEnrollements)
+//Functions
 const openModal = (course, isSee) => {
   if (isSee) {
     courseStore.fillCoursesData(course);
@@ -72,7 +76,9 @@ const openModal = (course, isSee) => {
                 {{ course.name }}
               </th>
               <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {{ course.students.length }}
+                {{ getNumberOfStudents(course.id) }}
+                <!-- {{ course.id }} -->
+                <!-- {{ course.students.length }} -->
               </td>
               <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-1">
                 <NButton @click="openModal(course, true)" strong secondary type="success">Ver</NButton>
