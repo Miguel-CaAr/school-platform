@@ -55,12 +55,14 @@ onMounted(() => {
           <NSpace vertical>
             <NSelect
               v-model:value="enrollementsStore.enroll.course_id"
+              placeholder="Seleccione curso"
               :clearable="true"
               :filterable="true"
               :options="coursesOptions"
             />
             <NSelect
               v-model:value="enrollementsStore.enroll.student_id"
+              placeholder="Seleccione alumno(s)"
               :disabled="enrollementsStore.enroll.course_id === null"
               :options="studentsOptions"
               :multiple="true"

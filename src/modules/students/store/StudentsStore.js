@@ -8,6 +8,7 @@ export const useStudentsStore = defineStore("StudentsStore", () => {
     name: null,
     email: null,
     password: null,
+    enrolledCourses: [],
   });
 
   const listStudents = ref([]); //La lista de alumnos que se renderizara con un for in en AlumnosRegistrados.vue
@@ -23,6 +24,7 @@ export const useStudentsStore = defineStore("StudentsStore", () => {
       name: _student.name,
       email: _student.email,
       password: _student.password,
+      enrolledCourses: null,
     };
   }
 
@@ -32,6 +34,7 @@ export const useStudentsStore = defineStore("StudentsStore", () => {
       name: null,
       email: null,
       password: null,
+      enrolledCourses: null
     };
   }
 
